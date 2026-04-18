@@ -64,16 +64,18 @@ function FacetGroup({
   selected: string[];
   onToggle: (v: string) => void;
 }) {
-  const entries = Object.entries(values).sort((a, b) => b[1] - a[1]);
-  if (entries.length === 0) return null;
   const selectedSet = new Set(selected);
+  const available = Object.entries(values).sort((a, b) => b[1] - a[1]);
+  const availableKeys = new Set(available.map(([v]) => v));
+  const strandedSelected = selected.filter((v) => !availableKeys.has(v));
+  if (available.length === 0 && strandedSelected.length === 0) return null;
   return (
     <fieldset className="mb-4">
       <legend className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">
         {label}
       </legend>
       <ul>
-        {entries.map(([v, n]) => (
+        {available.map(([v, n]) => (
           <li key={v}>
             <label className="flex items-center gap-2 py-0.5">
               <input
@@ -83,6 +85,15 @@ function FacetGroup({
               />
               <span className="flex-1 truncate" title={v}>{v}</span>
               <span className="text-xs text-slate-400">{n}</span>
+            </label>
+          </li>
+        ))}
+        {strandedSelected.map((v) => (
+          <li key={v}>
+            <label className="flex items-center gap-2 py-0.5 opacity-60">
+              <input type="checkbox" checked onChange={() => onToggle(v)} />
+              <span className="flex-1 truncate line-through" title={v}>{v}</span>
+              <span className="text-xs text-slate-400">0</span>
             </label>
           </li>
         ))}
