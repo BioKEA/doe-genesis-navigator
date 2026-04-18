@@ -13,6 +13,8 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
   return (
     <Link
       to={`/profile/${profile.slug}`}
+      data-slug={profile.slug}
+      tabIndex={0}
       className="flex flex-col gap-2 rounded-md border border-slate-200 bg-white p-3 shadow-sm hover:border-slate-400"
     >
       <div className="flex items-start justify-between gap-2">

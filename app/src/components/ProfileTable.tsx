@@ -20,7 +20,8 @@ export default function ProfileTable({ profiles }: { profiles: Profile[] }) {
         </thead>
         <tbody>
           {profiles.map((p) => (
-            <tr key={p.slug} className="border-t border-slate-100 hover:bg-slate-50">
+            <tr key={p.slug} data-slug={p.slug} tabIndex={0}
+                className="border-t border-slate-100 hover:bg-slate-50 focus:bg-slate-100 focus:outline-none">
               <td className="px-3 py-2">
                 <Link to={`/profile/${p.slug}`} className="font-medium text-sky-700 hover:underline">
                   {p.name}

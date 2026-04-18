@@ -5,8 +5,10 @@ import ProfileDetail from "./routes/ProfileDetail";
 import Compare from "./routes/Compare";
 import Network from "./routes/Network";
 import NotFound from "./routes/NotFound";
+import { useGlobalShortcuts } from "./lib/keyboard";
 
 export default function App() {
+  useGlobalShortcuts();
   return (
     <HashRouter>
       <div className="flex min-h-screen flex-col">
