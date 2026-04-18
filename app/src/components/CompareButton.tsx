@@ -1,10 +1,9 @@
 import { Columns } from "lucide-react";
-import { useEffect, useState } from "react";
-import { addCompare, getCompare, removeCompare } from "../lib/storage";
+import { addCompare, removeCompare, useCompare } from "../lib/storage";
 
 export default function CompareButton({ slug }: { slug: string }) {
-  const [on, setOn] = useState(false);
-  useEffect(() => { setOn(getCompare().includes(slug)); }, [slug]);
+  const compare = useCompare();
+  const on = compare.includes(slug);
   return (
     <button
       type="button"
@@ -13,14 +12,8 @@ export default function CompareButton({ slug }: { slug: string }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (on) {
-          removeCompare(slug);
-          setOn(false);
-        } else {
-          const ok = addCompare(slug);
-          if (!ok) alert("Compare is full (5 max).");
-          else setOn(true);
-        }
+        if (on) removeCompare(slug);
+        else if (!addCompare(slug)) alert("Compare is full (5 max).");
       }}
     >
       <Columns

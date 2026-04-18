@@ -1,10 +1,9 @@
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
-import { getFavorites, toggleFavorite } from "../lib/storage";
+import { toggleFavorite, useFavorites } from "../lib/storage";
 
 export default function FavoriteButton({ slug }: { slug: string }) {
-  const [on, setOn] = useState(false);
-  useEffect(() => { setOn(getFavorites().includes(slug)); }, [slug]);
+  const favorites = useFavorites();
+  const on = favorites.includes(slug);
   return (
     <button
       type="button"
@@ -13,7 +12,7 @@ export default function FavoriteButton({ slug }: { slug: string }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        setOn(toggleFavorite(slug));
+        toggleFavorite(slug);
       }}
     >
       <Star

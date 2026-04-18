@@ -3,7 +3,7 @@ import { loadData } from "../data";
 import { useFilterState } from "../lib/url-state";
 import { applyFilters, facetCounts, sortProfiles, type Facet } from "../lib/filters";
 import { createFuse, searchSlugs } from "../lib/search";
-import { getFavorites } from "../lib/storage";
+import { useFavorites } from "../lib/storage";
 import FilterSidebar from "../components/FilterSidebar";
 import ProfileCard from "../components/ProfileCard";
 import ProfileTable from "../components/ProfileTable";
@@ -12,11 +12,10 @@ import type { Profile } from "../types";
 
 export default function Browse() {
   const [bundle, setBundle] = useState<Awaited<ReturnType<typeof loadData>> | null>(null);
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const favorites = useFavorites();
   const [state, update] = useFilterState();
 
   useEffect(() => { loadData().then(setBundle); }, []);
-  useEffect(() => { setFavorites(getFavorites()); }, [state.favoritesOnly]);
 
   const fuse = useMemo(() => {
     if (!bundle) return null;
