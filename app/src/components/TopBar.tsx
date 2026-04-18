@@ -11,7 +11,7 @@ export default function TopBar() {
       <div className="text-sm font-semibold">Genesis Partners</div>
       <nav className="flex gap-1">
         <NavLink to="/" end className={tabClass}>Browse</NavLink>
-        <NavLink to="/network" className={tabClass}>Network</NavLink>
+        <NavLink to="/network" className={tabClass}>Matchmaker</NavLink>
         <NavLink to="/compare" className={tabClass}>Compare</NavLink>
       </nav>
     </header>
