@@ -1,0 +1,14 @@
+# Brainstorming / workflow artifacts
+.superpowers/
+
+# macOS
+.DS_Store
+
+# Node / app build artifacts
+node_modules/
+app/public/data/
+app/dist/
+app/node_modules/
+
+# Redundant with unzipped detail-pages/ and list-pages/
+genesis-partners-dump.zip
