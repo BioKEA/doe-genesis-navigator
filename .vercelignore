@@ -1,0 +1,10 @@
+node_modules
+app/node_modules
+app/dist
+app/public/data
+app/public/detail-pages
+app/test-results
+app/playwright-report
+.superpowers
+docs
+genesis-partners-dump.zip

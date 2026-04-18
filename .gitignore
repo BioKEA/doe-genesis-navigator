@@ -12,3 +12,4 @@ app/node_modules/
 
 # Redundant with unzipped detail-pages/ and list-pages/
 genesis-partners-dump.zip
+.vercel
