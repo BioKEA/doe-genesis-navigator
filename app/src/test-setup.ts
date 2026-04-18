@@ -1,29 +1,16 @@
 import "@testing-library/jest-dom/vitest";
 
-// Polyfill/override localStorage to ensure it has a clear method for tests
-const store: Record<string, string> = {};
-const localStoragePolyfill: Storage = {
-  getItem: (key: string) => store[key] || null,
-  setItem: (key: string, value: string) => {
-    store[key] = value.toString();
-  },
-  removeItem: (key: string) => {
-    delete store[key];
-  },
-  clear: () => {
-    for (const key in store) {
-      delete store[key];
-    }
-  },
-  key: (index: number) => {
-    const keys = Object.keys(store);
-    return keys[index] || null;
-  },
-  length: Object.keys(store).length,
-} as Storage;
-
+// jsdom in Vitest 4 + the pinned jsdom version doesn't provide a functional
+// localStorage.clear(). Replace with an in-memory implementation for tests.
+const store = new Map<string, string>();
+const storage: Storage = {
+  get length() { return store.size; },
+  clear: () => store.clear(),
+  getItem: (k) => store.get(k) ?? null,
+  key: (i) => Array.from(store.keys())[i] ?? null,
+  removeItem: (k) => { store.delete(k); },
+  setItem: (k, v) => { store.set(k, String(v)); },
+};
 Object.defineProperty(globalThis, "localStorage", {
-  value: localStoragePolyfill,
-  writable: true,
-  configurable: true,
+  value: storage, writable: true, configurable: true,
 });
