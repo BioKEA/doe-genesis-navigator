@@ -63,7 +63,7 @@ export function extractTaggedText(
   if (row.length === 0) return undefined;
   const value = row.find("div.fieldValue").first();
   const tags = value
-    .find(".field__item, .checkbox-note__option, li")
+    .find(".taxonomy-checkbox-notes-list__term")
     .map((_, el) => $(el).text().trim())
     .get()
     .filter((s) => s.length > 0 && s.length < 200);
