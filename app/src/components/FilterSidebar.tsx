@@ -1,12 +1,14 @@
+import { useState } from "react";
 import type { FacetCounts, Facet } from "../lib/filters";
 
 interface Group {
   facet: Facet;
   label: string;
+  collapseAfter?: number;
 }
 
 const GROUPS: Group[] = [
-  { facet: "challenge",   label: "Challenge area" },
+  { facet: "challenge",   label: "Challenge area", collapseAfter: 8 },
   { facet: "offers",      label: "Offers" },
   { facet: "seeking",     label: "Seeking" },
   { facet: "partnerType", label: "Partner type" },
@@ -49,6 +51,7 @@ export default function FilterSidebar({
           label={g.label}
           values={counts[g.facet]}
           selected={selected[g.facet]}
+          collapseAfter={g.collapseAfter}
           onToggle={(v) => onToggle(g.facet, v)}
         />
       ))}
@@ -57,25 +60,36 @@ export default function FilterSidebar({
 }
 
 function FacetGroup({
-  label, values, selected, onToggle,
+  label, values, selected, collapseAfter, onToggle,
 }: {
   label: string;
   values: Record<string, number>;
   selected: string[];
+  collapseAfter?: number;
   onToggle: (v: string) => void;
 }) {
+  const [expanded, setExpanded] = useState(false);
   const selectedSet = new Set(selected);
   const available = Object.entries(values).sort((a, b) => b[1] - a[1]);
   const availableKeys = new Set(available.map(([v]) => v));
   const strandedSelected = selected.filter((v) => !availableKeys.has(v));
   if (available.length === 0 && strandedSelected.length === 0) return null;
+
+  const shouldCollapse =
+    collapseAfter !== undefined && !expanded && available.length > collapseAfter;
+  const visible = shouldCollapse
+    ? // Always include selected items even if below cutoff, plus top N by count
+      available.filter(([v], i) => i < collapseAfter! || selectedSet.has(v))
+    : available;
+  const hiddenCount = available.length - visible.length;
+
   return (
     <fieldset className="mb-4">
       <legend className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">
         {label}
       </legend>
       <ul>
-        {available.map(([v, n]) => (
+        {visible.map(([v, n]) => (
           <li key={v}>
             <label className="flex items-center gap-2 py-0.5">
               <input
@@ -98,6 +112,17 @@ function FacetGroup({
           </li>
         ))}
       </ul>
+      {collapseAfter !== undefined && available.length > collapseAfter && (
+        <button
+          className="mt-1 text-xs text-slate-500 hover:underline"
+          onClick={() => setExpanded((x) => !x)}
+        >
+          {expanded ? "Show less" : `Show all (${available.length})`}
+          {!expanded && hiddenCount > 0 && (
+            <span className="text-slate-400"> · {hiddenCount} hidden</span>
+          )}
+        </button>
+      )}
     </fieldset>
   );
 }
