@@ -1,0 +1,116 @@
+import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import * as cheerio from "cheerio";
+import type {
+  NetworkData,
+  NetworkEdge,
+  NetworkNode,
+  ParseError,
+  Profile,
+} from "../src/types";
+import {
+  extractLabeledLink,
+  extractLabeledHtmlText,
+  extractLabeledTags,
+  extractLabeledText,
+  extractName,
+  extractTaggedText,
+} from "./lib/extract";
+import { inferKind } from "./lib/infer-kind";
+import { buildEdges, topNeighbors } from "./lib/similarity";
+import { buildSearchIndex } from "./lib/search-index";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const SOURCE_DIR = resolve(__dirname, "../../detail-pages");
+const OUT_DIR = resolve(__dirname, "../public/data");
+
+function slugFromFilename(file: string): string {
+  return file.replace(/\.html$/i, "");
+}
+
+function countFilled(p: Profile): number {
+  let n = 0;
+  for (const v of [
+    p.affiliation,
+    p.orgType,
+    p.orgSize,
+    p.website,
+    p.introduction,
+    p.offerings?.text,
+    p.seeking?.text,
+    p.projectIdeaSummary,
+    p.relevantProjects,
+    p.relevantPublications,
+    p.rfaNumber,
+  ]) if (v && v.trim().length > 0) n++;
+  n += p.challengeAreas.length > 0 ? 1 : 0;
+  n += p.partnerTypeSeeking.length > 0 ? 1 : 0;
+  return n;
+}
+
+function parseOne(file: string, html: string): Profile {
+  const $ = cheerio.load(html);
+  const slug = slugFromFilename(file);
+  const kind = inferKind($);
+  return {
+    slug,
+    name: extractName($),
+    kind,
+    affiliation: extractLabeledText($, "Affiliation"),
+    orgType: extractLabeledText($, "Organization Type"),
+    orgSize: extractLabeledText($, "Organization Size"),
+    website: extractLabeledLink($, "Website Address"),
+    introduction: extractLabeledHtmlText($, "Introduction"),
+    challengeAreas: extractLabeledTags($, "National Science and Technology Challenges"),
+    offerings: extractTaggedText($, "Offerings"),
+    seeking: extractTaggedText($, "Capabilities Seeking"),
+    partnerTypeSeeking: extractLabeledTags($, "Partner Type Seeking"),
+    projectIdeaSummary: extractLabeledHtmlText($, "Project Idea Summary"),
+    relevantProjects: extractLabeledHtmlText($, "Relevant Projects"),
+    relevantPublications: extractLabeledHtmlText($, "Relevant Publications"),
+    rfaNumber: extractLabeledText($, "RFA #"),
+    rawHtmlPath: `detail-pages/${file}`,
+  };
+}
+
+function main() {
+  mkdirSync(OUT_DIR, { recursive: true });
+
+  const files = readdirSync(SOURCE_DIR).filter((f) => f.endsWith(".html")).sort();
+  const profiles: Profile[] = [];
+  const errors: ParseError[] = [];
+
+  for (const file of files) {
+    try {
+      const html = readFileSync(join(SOURCE_DIR, file), "utf8");
+      profiles.push(parseOne(file, html));
+    } catch (err) {
+      const slug = slugFromFilename(file);
+      errors.push({ slug, message: err instanceof Error ? err.message : String(err) });
+    }
+  }
+
+  const neighbors = topNeighbors(profiles, 6);
+  const edges: NetworkEdge[] = buildEdges(profiles);
+  const nodes: NetworkNode[] = profiles.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    affiliation: p.affiliation,
+    richness: countFilled(p),
+  }));
+  const network: NetworkData = { nodes, edges, neighbors };
+
+  const search = buildSearchIndex(profiles);
+
+  writeFileSync(join(OUT_DIR, "profiles.json"), JSON.stringify(profiles));
+  writeFileSync(join(OUT_DIR, "network.json"), JSON.stringify(network));
+  writeFileSync(join(OUT_DIR, "search.json"), JSON.stringify(search));
+  writeFileSync(join(OUT_DIR, "parse-errors.json"), JSON.stringify(errors, null, 2));
+
+  console.log(
+    `parsed ${profiles.length} profiles, ${edges.length} edges, ${errors.length} errors`,
+  );
+}
+
+main();
