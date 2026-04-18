@@ -3,22 +3,11 @@ import * as d3 from "d3-force";
 import { select } from "d3-selection";
 import { drag as d3drag } from "d3-drag";
 import type { NetworkData, NetworkNode } from "../types";
+import { affiliationColor } from "../lib/affiliations";
 
 interface SimNode extends d3.SimulationNodeDatum, NetworkNode {}
 interface SimLink extends d3.SimulationLinkDatum<SimNode> {
   weight: number;
-}
-
-const AFFILIATION_COLORS: Record<string, string> = {
-  "Academic institution": "#4f46e5",
-  "Industry": "#059669",
-  "National Laboratory": "#d97706",
-  "Government": "#dc2626",
-};
-
-function affiliationColor(a?: string) {
-  if (!a) return "#64748b";
-  return AFFILIATION_COLORS[a] ?? "#64748b";
 }
 
 interface Props {

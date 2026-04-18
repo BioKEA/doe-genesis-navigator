@@ -3,13 +3,7 @@ import { Link } from "react-router-dom";
 import { loadData } from "../data";
 import NetworkGraph from "../components/NetworkGraph";
 import type { Profile } from "../types";
-
-const AFFILIATION_COLORS: Record<string, string> = {
-  "Academic institution": "#4f46e5",
-  "Industry": "#059669",
-  "National Laboratory": "#d97706",
-  "Government": "#dc2626",
-};
+import { AFFILIATION_COLORS } from "../lib/affiliations";
 
 export default function Network() {
   const [bundle, setBundle] = useState<Awaited<ReturnType<typeof loadData>> | null>(null);
