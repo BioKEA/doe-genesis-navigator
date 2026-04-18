@@ -13,6 +13,9 @@
     "test:watch": "vitest",
     "e2e": "playwright test"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "cheerio": "^1.2.0",
     "d3-drag": "^3.0.0",
