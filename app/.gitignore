@@ -1,6 +1,7 @@
 node_modules/
 dist/
 public/data/
+public/detail-pages/
 .DS_Store
 test-results/
 playwright-report/

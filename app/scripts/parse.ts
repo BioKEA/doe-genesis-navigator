@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, cpSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
@@ -76,6 +76,9 @@ function parseOne(file: string, html: string): Profile {
 
 function main() {
   mkdirSync(OUT_DIR, { recursive: true });
+
+  const PUBLIC_DETAIL_DIR = resolve(__dirname, "../public/detail-pages");
+  cpSync(SOURCE_DIR, PUBLIC_DETAIL_DIR, { recursive: true });
 
   const files = readdirSync(SOURCE_DIR).filter((f) => f.endsWith(".html")).sort();
   const profiles: Profile[] = [];
