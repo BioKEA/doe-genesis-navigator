@@ -4,6 +4,7 @@ import Browse from "./routes/Browse";
 import ProfileDetail from "./routes/ProfileDetail";
 import Compare from "./routes/Compare";
 import Network from "./routes/Network";
+import Composer from "./routes/Composer";
 import NotFound from "./routes/NotFound";
 import { useGlobalShortcuts } from "./lib/keyboard";
 
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/profile/:slug" element={<ProfileDetail />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/network" element={<Network />} />
+            <Route path="/composer" element={<Composer />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
