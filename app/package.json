@@ -13,6 +13,7 @@
     "concepts:label": "tsx --env-file=.env scripts/concepts/04-label.ts",
     "curate": "tsx scripts/concepts/curate.ts",
     "concepts:retag": "tsx --env-file=.env scripts/concepts/05-retag.ts",
+    "matches:retag-fields": "tsx --env-file=.env scripts/matches/01-retag-fields.ts",
     "concepts": "npm run concepts:extract && npm run concepts:embed && npm run concepts:cluster && npm run concepts:label && echo '\\nNext: run \"npm run curate\" to curate the concept layer, then \"npm run concepts:retag\".'",
     "build": "npm run parse && tsc -b && vite build",
     "lint": "eslint .",
