@@ -1,13 +1,15 @@
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, cpSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync, cpSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
 import type {
+  ConceptsArtifact,
   NetworkData,
   NetworkEdge,
   NetworkNode,
   ParseError,
   Profile,
+  ProfileConceptMap,
 } from "../src/types";
 import {
   extractLabeledLink,
@@ -20,6 +22,7 @@ import {
 import { inferKind } from "./lib/infer-kind";
 import { buildEdges, topNeighbors } from "./lib/similarity";
 import { buildSearchIndex } from "./lib/search-index";
+import { attachConceptIds } from "./concepts/lib/merge";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SOURCE_DIR = resolve(__dirname, "../../detail-pages");
@@ -94,9 +97,23 @@ function main() {
     }
   }
 
-  const neighbors = topNeighbors(profiles, 6);
-  const edges: NetworkEdge[] = buildEdges(profiles);
-  const nodes: NetworkNode[] = profiles.map((p) => ({
+  // Merge curated concept layer if available (Plan 1 of the knowledge-graph redesign)
+  const CONCEPTS_PATH = resolve(__dirname, "../data-source/concepts.json");
+  const PROFILE_CONCEPTS_PATH = resolve(__dirname, "../data-source/profile-concepts.json");
+  let mergedProfiles = profiles;
+  if (existsSync(CONCEPTS_PATH) && existsSync(PROFILE_CONCEPTS_PATH)) {
+    const map = JSON.parse(readFileSync(PROFILE_CONCEPTS_PATH, "utf8")) as ProfileConceptMap;
+    mergedProfiles = attachConceptIds(profiles, map);
+    const concepts = JSON.parse(readFileSync(CONCEPTS_PATH, "utf8")) as ConceptsArtifact;
+    writeFileSync(join(OUT_DIR, "concepts.json"), JSON.stringify(concepts));
+    console.log(`merged ${concepts.concepts.length} concepts, tagged ${Object.keys(map).length} profiles`);
+  } else {
+    console.log("no concepts.json found — skipping concept merge (run npm run concepts first)");
+  }
+
+  const neighbors = topNeighbors(mergedProfiles, 6);
+  const edges: NetworkEdge[] = buildEdges(mergedProfiles);
+  const nodes: NetworkNode[] = mergedProfiles.map((p) => ({
     slug: p.slug,
     name: p.name,
     affiliation: p.affiliation,
@@ -104,9 +121,9 @@ function main() {
   }));
   const network: NetworkData = { nodes, edges, neighbors };
 
-  const search = buildSearchIndex(profiles);
+  const search = buildSearchIndex(mergedProfiles);
 
-  writeFileSync(join(OUT_DIR, "profiles.json"), JSON.stringify(profiles));
+  writeFileSync(join(OUT_DIR, "profiles.json"), JSON.stringify(mergedProfiles));
   writeFileSync(join(OUT_DIR, "network.json"), JSON.stringify(network));
   writeFileSync(join(OUT_DIR, "search.json"), JSON.stringify(search));
   writeFileSync(join(OUT_DIR, "parse-errors.json"), JSON.stringify(errors, null, 2));
