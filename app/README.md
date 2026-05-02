@@ -31,6 +31,39 @@ npm run build   # runs the parser + Vite build, output in dist/
 (raw scraped HTML used by the "View original" links), plus the ~300 KB
 app itself. All static, no runtime.
 
+## Concept extraction pipeline (one-shot, offline)
+
+The Canvas UI (Plan 1+ of the knowledge-graph redesign) needs a curated
+concept layer. This is a manual one-shot pipeline; the resulting JSON
+files in `app/data-source/` are committed and the production build never
+calls LLMs.
+
+```bash
+# 1. Set ANTHROPIC_API_KEY in app/.env (see app/.env.example)
+
+# 2. Pre-curation pipeline (extract → embed → cluster → label)
+npm run concepts                    # ~10-15 min, ~$3-5 in Haiku calls
+
+# 3. Manual curation (~1-2 hours, single sitting)
+npm run curate                      # opens http://localhost:5180
+                                    # rename, merge, drop, recategorize
+                                    # autosaves to app/data-source/concepts.json
+
+# 4. Re-tag profiles against the curated vocabulary
+npm run concepts:retag              # ~3-5 min, ~$1-2 in Haiku calls
+                                    # writes app/data-source/profile-concepts.json
+
+# 5. Commit the artifacts
+git add app/data-source/concepts.json app/data-source/profile-concepts.json
+git commit -m "data(concepts): refresh concept layer"
+```
+
+LLM responses are cached in `app/build/llm-cache/` (gitignored) keyed by
+input SHA — partial failures and reruns are free.
+
+The committed artifacts are picked up automatically by `npm run parse`.
+Vercel's build never needs `ANTHROPIC_API_KEY`.
+
 ## Deploy to Vercel (Hobby / free tier)
 
 Two options.
