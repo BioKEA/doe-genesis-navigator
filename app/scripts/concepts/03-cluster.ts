@@ -11,7 +11,7 @@ const OUT = resolve(BUILD_DIR, "clusters.json");
 
 // Tunables. These produce ~80-150 clusters in our typical run; lower eps for
 // tighter clusters, higher minPoints to demand more support per cluster.
-const EPS = 0.4;
+const EPS = 0.6;
 const MIN_POINTS = 3;
 
 function main() {
