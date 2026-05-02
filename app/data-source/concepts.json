@@ -1,0 +1,1825 @@
+{
+  "generatedAt": "2026-05-02T17:27:33.072Z",
+  "categories": [
+    {
+      "id": "ai-ml-foundations",
+      "label": "AI/ML Model Development & Foundations"
+    },
+    {
+      "id": "scientific-simulation",
+      "label": "Scientific Simulation & Modeling"
+    },
+    {
+      "id": "materials-discovery",
+      "label": "Materials Discovery & Design"
+    },
+    {
+      "id": "experimental-automation",
+      "label": "Experimental Automation & Optimization"
+    },
+    {
+      "id": "computing-infrastructure",
+      "label": "Computing Infrastructure & Resources"
+    },
+    {
+      "id": "data-management",
+      "label": "Data Management & Quality"
+    },
+    {
+      "id": "autonomous-systems",
+      "label": "Autonomous Systems & Control"
+    },
+    {
+      "id": "energy-nuclear",
+      "label": "Energy & Nuclear Systems"
+    },
+    {
+      "id": "responsible-trustworthy-ai",
+      "label": "Responsible & Trustworthy AI"
+    },
+    {
+      "id": "biological-genomics",
+      "label": "Biological Systems & Genomics"
+    },
+    {
+      "id": "physics-engineering",
+      "label": "Physics & Engineering Applications"
+    },
+    {
+      "id": "environmental-geo",
+      "label": "Environmental & Geoscience Systems"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "scientific-workflow-orchestration",
+      "label": "Scientific Workflow Orchestration",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "workflow orchestration",
+        "automated workflow orchestration",
+        "scientific workflow orchestration",
+        "computational workflow orchestration"
+      ]
+    },
+    {
+      "id": "edge-computing-deployment",
+      "label": "Edge Computing & Deployment",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "edge computing",
+        "edge computing optimization",
+        "edge computing systems",
+        "edge computing workflows",
+        "edge-ai computing",
+        "edge-ai hardware",
+        "edge deployment",
+        "edge deployment optimization",
+        "edge ai deployment",
+        "edge-compatible deployment"
+      ]
+    },
+    {
+      "id": "embodied-ai-systems",
+      "label": "Embodied AI Systems",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "embodied ai systems",
+        "embodied ai",
+        "embodied physical ai",
+        "embodied ai for robotics",
+        "embodied ai robotics"
+      ]
+    },
+    {
+      "id": "robotic-manipulation",
+      "label": "Robotic Manipulation",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "robotic manipulation",
+        "robot manipulation",
+        "autonomous manipulation",
+        "robotic manipulation systems",
+        "autonomous mobile manipulation"
+      ]
+    },
+    {
+      "id": "foundation-models",
+      "label": "Foundation Models",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "foundation models",
+        "spatial foundation models",
+        "foundational models",
+        "foundation model fine-tuning",
+        "scientific foundation models",
+        "domain-specific foundation models",
+        "foundation model selection",
+        "foundation model tuning",
+        "foundation models for science",
+        "robot foundation models",
+        "foundation models for robotics",
+        "foundation robotics models"
+      ]
+    },
+    {
+      "id": "autonomous-laboratory-systems",
+      "label": "Autonomous Laboratory Systems",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "autonomous laboratories",
+        "autonomous labs",
+        "autonomous laboratory operation",
+        "automated laboratories",
+        "autonomous laboratory systems",
+        "autonomous lab",
+        "autonomous laboratory",
+        "autonomous laboratory automation",
+        "ai for autonomous labs",
+        "laboratory automation",
+        "autonomous laboratory control",
+        "automated laboratory systems",
+        "automated laboratory operations",
+        "autonomous laboratory security",
+        "automated lab systems",
+        "autonomous laboratory workflows",
+        "lab automation",
+        "laboratory process automation",
+        "autonomous lab workflows",
+        "autonomous experimental workflows",
+        "experimental workflow automation",
+        "experimental workflows",
+        "automated experimental workflows",
+        "scientific workflow automation",
+        "workflow automation",
+        "research workflow automation",
+        "experimental workflow integration",
+        "scientific workflow integration",
+        "scientific workflows",
+        "manufacturing workflow automation",
+        "nextflow workflow automation",
+        "industrial workflow automation",
+        "scientific reasoning workflows",
+        "ai-enabled scientific workflows",
+        "autonomous manufacturing workflows",
+        "industrial process automation",
+        "ai-enabled workflows",
+        "ai-driven science workflows",
+        "ai native scientific workflows",
+        "industrial automation",
+        "ai workflow integration",
+        "ai-driven workflows",
+        "ai workflow software",
+        "ai agent workflows",
+        "automation",
+        "agentic ai workflows",
+        "ai-driven engineering workflows",
+        "agentic workflows",
+        "agent-based workflows",
+        "agentic workflow systems",
+        "agentic workflow",
+        "multi-agentic ai workflow",
+        "robotic automation",
+        "adaptive automation",
+        "flexible automation",
+        "agent-driven workflows",
+        "agentic workflow orchestration",
+        "agentic scientific workflows",
+        "multi-agent workflows",
+        "robotic experimentation automation",
+        "robotics automation",
+        "robotic process automation",
+        "agent orchestration",
+        "agentic orchestration",
+        "robotic experimentation",
+        "automated robotics systems",
+        "agentic ai orchestration",
+        "multi-agent orchestration",
+        "agent-based orchestration",
+        "autonomous experimentation",
+        "agentic ai",
+        "ai orchestration",
+        "agentic ai compilation",
+        "ai-driven experimentation",
+        "autonomous experiments",
+        "automated experimentation",
+        "agentic ai systems",
+        "agentic ai frameworks",
+        "agentic ai safety",
+        "agentic ai platform",
+        "agentic ai logic",
+        "ai agents",
+        "agentic ai workloads",
+        "autonomous ai agents",
+        "agentic frameworks",
+        "ai agent security",
+        "ai safety",
+        "agentic software platform",
+        "multi-agent ai",
+        "ai agent integration",
+        "ai-powered agents",
+        "autonomous agents",
+        "autonomous ai systems",
+        "agent frameworks",
+        "ai security",
+        "safe ai development",
+        "safety-critical ai evaluation",
+        "agentic software engineering",
+        "ai integration",
+        "autonomous systems",
+        "ai inference security",
+        "ai security training",
+        "secure ai mechanisms",
+        "ai integration services",
+        "autonomous control systems",
+        "autonomous systems control",
+        "robotics and autonomous systems",
+        "experimental design automation",
+        "experimental automation",
+        "experiment design automation",
+        "experiment automation"
+      ]
+    },
+    {
+      "id": "spectroscopy-analysis",
+      "label": "Spectroscopy Analysis",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "spectroscopy analysis",
+        "spectroscopy",
+        "theoretical spectroscopy",
+        "applied spectroscopy"
+      ]
+    },
+    {
+      "id": "ai-ml-model-development",
+      "label": "AI/ML Model Development",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "ai/ml model development",
+        "ai model development",
+        "ai/ml models",
+        "ai models",
+        "artificial intelligence models",
+        "ai predictive models"
+      ]
+    },
+    {
+      "id": "materials-discovery-property-prediction",
+      "label": "Materials Discovery & Property Prediction",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "materials discovery",
+        "material discovery",
+        "materials discovery algorithms",
+        "materials discovery ml",
+        "materials science discovery",
+        "materials datasets",
+        "material property datasets",
+        "materials databases",
+        "materials data science",
+        "material property prediction",
+        "material property estimation",
+        "materials property prediction",
+        "materials characterization",
+        "advanced materials characterization",
+        "material characterization"
+      ]
+    },
+    {
+      "id": "active-learning-systems",
+      "label": "Active Learning Systems",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "active learning",
+        "active learning optimization",
+        "active learning systems"
+      ]
+    },
+    {
+      "id": "quantum-computing-algorithms",
+      "label": "Quantum Computing & Algorithms",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "quantum computing",
+        "quantum computing access",
+        "quantum computing pathways",
+        "quantum algorithms",
+        "hybrid quantum-classical algorithms",
+        "quantum algorithm discovery",
+        "quantum algorithm validation",
+        "quantum-classical algorithms",
+        "hybrid quantum-classical ai",
+        "quantum-classical hybrid computing",
+        "quantum circuit design",
+        "quantum circuits",
+        "quantum circuit optimization",
+        "post-quantum cryptography",
+        "post quantum encryption",
+        "quantum cryptography"
+      ]
+    },
+    {
+      "id": "critical-minerals-research",
+      "label": "Critical Minerals Research",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "critical minerals research",
+        "critical minerals",
+        "critical minerals recovery",
+        "critical mineral analysis",
+        "critical minerals supply",
+        "critical minerals prospectivity",
+        "critical mineral technology",
+        "critical minerals production",
+        "critical minerals mapping",
+        "critical minerals exploration",
+        "critical minerals assessment",
+        "critical minerals optimization",
+        "critical mineral recovery",
+        "critical minerals extraction",
+        "critical mineral extraction",
+        "critical minerals supply chain",
+        "critical mineral separation"
+      ]
+    },
+    {
+      "id": "nuclear-reactor-design-engineering",
+      "label": "Nuclear Reactor Design & Engineering",
+      "categoryId": "energy-nuclear",
+      "memberPhrases": [
+        "small modular reactors",
+        "small modular reactor construction",
+        "modular reactor design",
+        "reactor design",
+        "reactor engineering",
+        "advanced reactor concepts",
+        "fusion reactor design",
+        "nuclear reactor design",
+        "fusion reactor optimization",
+        "nuclear reactor physics"
+      ]
+    },
+    {
+      "id": "automated-code-generation-optimization",
+      "label": "Automated Code Generation & Optimization",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "code generation",
+        "code generation optimization",
+        "automated code generation",
+        "code generation from natural language",
+        "autonomous code generation",
+        "code optimization",
+        "automatic code optimization"
+      ]
+    },
+    {
+      "id": "trustworthy-ai-systems",
+      "label": "Trustworthy AI Systems",
+      "categoryId": "responsible-trustworthy-ai",
+      "memberPhrases": [
+        "trustworthy ai",
+        "trustworthy ai systems",
+        "trustworthy scientific ai",
+        "ai trustworthiness",
+        "trust in ai systems",
+        "trustworthy ai frameworks",
+        "ai auditability",
+        "ai agent auditing",
+        "ai safety auditing"
+      ]
+    },
+    {
+      "id": "provenance-tracking-verification",
+      "label": "Provenance Tracking & Verification",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "data provenance tracking",
+        "provenance tracking",
+        "data provenance",
+        "experimental provenance tracking",
+        "model provenance tracking",
+        "data provenance verification",
+        "provenance management",
+        "provenance collection",
+        "provenance verification",
+        "blockchain data provenance",
+        "metadata and provenance",
+        "provenance-preserving verification",
+        "cryptographic provenance"
+      ]
+    },
+    {
+      "id": "adversarial-robustness-testing",
+      "label": "Adversarial Robustness Testing",
+      "categoryId": "responsible-trustworthy-ai",
+      "memberPhrases": [
+        "adversarial robustness testing",
+        "adversarial robustness",
+        "adversarial testing"
+      ]
+    },
+    {
+      "id": "physics-informed-machine-learning",
+      "label": "Physics-Informed Machine Learning",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "physics-informed machine learning",
+        "physics-informed neural networks",
+        "physics-constrained machine learning",
+        "physics informed neural networks",
+        "physics-aware machine learning",
+        "machine learning for physics",
+        "physics-constrained learning",
+        "physics-constrained deep learning"
+      ]
+    },
+    {
+      "id": "energy-storage-systems",
+      "label": "Energy Storage Systems",
+      "categoryId": "energy-nuclear",
+      "memberPhrases": [
+        "energy storage",
+        "energy storage solutions",
+        "energy storage materials",
+        "energy storage systems",
+        "energy storage applications"
+      ]
+    },
+    {
+      "id": "experimental-design-optimization",
+      "label": "Experimental Design & Optimization",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "experimental optimization",
+        "experiment optimization",
+        "autonomous experimental optimization",
+        "experiment design optimization",
+        "optimal experimental design",
+        "optimal design of experiments",
+        "experimental design",
+        "experimental facilities",
+        "treat facility experiments",
+        "experimental facility design",
+        "experimental facility optimization"
+      ]
+    },
+    {
+      "id": "molecular-dynamics-simulation",
+      "label": "Molecular Dynamics Simulation",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "molecular dynamics simulation",
+        "molecular simulation",
+        "molecular dynamics",
+        "molecular dynamics simulations",
+        "molecular modeling"
+      ]
+    },
+    {
+      "id": "digital-twin-systems",
+      "label": "Digital Twin Systems",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "digital twins",
+        "digital twin",
+        "digital twin development",
+        "digital twin technology",
+        "digital twin environments",
+        "physics-based digital twin",
+        "ai digital twin",
+        "digital twin integration",
+        "digital twin platform",
+        "digital twin applications",
+        "digital twin framework",
+        "digital twin modeling",
+        "digital twin construction",
+        "digital twin infrastructure",
+        "digital twin manufacturing",
+        "digital twin simulation",
+        "physics-informed digital twins",
+        "digital twin platforms"
+      ]
+    },
+    {
+      "id": "high-performance-computing",
+      "label": "High-Performance Computing",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "high-performance computing",
+        "high performance computing",
+        "high-performance scientific computing"
+      ]
+    },
+    {
+      "id": "responsible-ai-governance",
+      "label": "Responsible AI Governance",
+      "categoryId": "responsible-trustworthy-ai",
+      "memberPhrases": [
+        "responsible ai research",
+        "responsible ai practices",
+        "responsible ai governance",
+        "responsible ai",
+        "ai governance frameworks",
+        "ai governance"
+      ]
+    },
+    {
+      "id": "gpu-computing-infrastructure",
+      "label": "GPU Computing Infrastructure",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "gpu computing resources",
+        "gpu computing",
+        "gpu computing infrastructure",
+        "gpu-native scientific computing",
+        "gpu-accelerated computing",
+        "gpu infrastructure",
+        "gpu programming",
+        "gpu architecture",
+        "gpu accelerated computing",
+        "gpu infrastructure management",
+        "gpu-accelerated workflows"
+      ]
+    },
+    {
+      "id": "detector-design-optimization",
+      "label": "Detector Design & Optimization",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "detector optimization",
+        "detector hardware optimization",
+        "detector design",
+        "detector development"
+      ]
+    },
+    {
+      "id": "probabilistic-inference-modeling",
+      "label": "Probabilistic Inference & Modeling",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "bayesian inference",
+        "probabilistic inference",
+        "approximate bayesian inference",
+        "probabilistic modeling",
+        "probabilistic analysis",
+        "hierarchical probabilistic modeling"
+      ]
+    },
+    {
+      "id": "scientific-reproducibility",
+      "label": "Scientific Reproducibility",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "scientific reproducibility",
+        "computational reproducibility",
+        "reproducibility",
+        "reproducibility assessment",
+        "reproducibility guarantees"
+      ]
+    },
+    {
+      "id": "generative-ai-modeling",
+      "label": "Generative AI & Modeling",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "generative ai",
+        "generative algorithms",
+        "generative ai modeling",
+        "generative ai models",
+        "generative modeling",
+        "generative models",
+        "generative design",
+        "generative design models",
+        "generative world models",
+        "generative design-space exploration"
+      ]
+    },
+    {
+      "id": "petabyte-scale-data-infrastructure",
+      "label": "Petabyte-Scale Data Infrastructure",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "petabyte-scale storage",
+        "petabyte-scale data",
+        "petabyte-scale infrastructure",
+        "petabyte-scale data analysis",
+        "petabyte data processing"
+      ]
+    },
+    {
+      "id": "heterogeneous-computing-systems",
+      "label": "Heterogeneous Computing Systems",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "heterogeneous computing",
+        "heterogeneous compute environments",
+        "heterogeneous computing systems",
+        "heterogeneous data systems",
+        "heterogeneous data integration"
+      ]
+    },
+    {
+      "id": "cloud-data-infrastructure",
+      "label": "Cloud & Data Infrastructure",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "cloud computing",
+        "cloud computing infrastructure",
+        "cloud computing services",
+        "cloud infrastructure",
+        "cloud data infrastructure",
+        "multi-cloud infrastructure",
+        "scalable cloud infrastructure",
+        "data infrastructure",
+        "research data infrastructure",
+        "datasets and data infrastructure",
+        "data infrastructure development",
+        "scientific data infrastructure",
+        "dataset infrastructure",
+        "scientific infrastructure",
+        "scientific computing infrastructure",
+        "computing infrastructure",
+        "computational infrastructure",
+        "cloud-native computing",
+        "cloud-native data infrastructure",
+        "cloud-native architecture"
+      ]
+    },
+    {
+      "id": "scientific-data-curation",
+      "label": "Scientific Data Curation",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "data curation",
+        "scientific data curation",
+        "dataset curation",
+        "data curation pipelines",
+        "labeled dataset curation",
+        "data curation workflows"
+      ]
+    },
+    {
+      "id": "language-vision-models",
+      "label": "Language & Vision Models",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "large language models",
+        "language models",
+        "small language models",
+        "large language model finetuning",
+        "vision-language-action models",
+        "vision-language models",
+        "vision language models"
+      ]
+    },
+    {
+      "id": "surrogate-modeling",
+      "label": "Surrogate Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "surrogate modeling",
+        "surrogate modelling",
+        "ml surrogate models",
+        "surrogate models",
+        "scientific surrogate modeling",
+        "probabilistic surrogate modeling",
+        "machine learning surrogate models",
+        "machine learning surrogates",
+        "ml surrogates",
+        "probabilistic surrogates",
+        "neural network surrogates"
+      ]
+    },
+    {
+      "id": "explainable-ai-scientific-reasoning",
+      "label": "Explainable AI & Scientific Reasoning",
+      "categoryId": "responsible-trustworthy-ai",
+      "memberPhrases": [
+        "explainable ai",
+        "interpretable ai",
+        "explainable ai systems",
+        "explainable ai reasoning",
+        "interpretable ai models",
+        "ai reasoning",
+        "interpretable machine learning",
+        "scientific reasoning ai",
+        "ai inference",
+        "ai reasoning validation",
+        "ai for scientific reasoning",
+        "ai for science",
+        "ai model validation",
+        "ai-driven reasoning validation",
+        "ai-enabled science",
+        "ai/ml validation",
+        "ai-driven reasoning",
+        "ai-driven decision support",
+        "ai decision support",
+        "ai-driven decision making",
+        "scientific reasoning",
+        "scientific reasoning models",
+        "scientific reasoning validation",
+        "reasoning models",
+        "neuro-symbolic ai architecture",
+        "neuro-symbolic architectures",
+        "neuro-symbolic ai",
+        "neuro-symbolic reasoning"
+      ]
+    },
+    {
+      "id": "federated-data-infrastructure",
+      "label": "Federated Data Infrastructure",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "federated data access",
+        "federated data sharing",
+        "federated data systems",
+        "federated data infrastructure",
+        "federated computing infrastructure",
+        "federated research infrastructure"
+      ]
+    },
+    {
+      "id": "spatio-temporal-prediction",
+      "label": "Spatio-Temporal Prediction",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "spatio-temporal data",
+        "spatio-temporal prediction",
+        "spatio-temporal systems",
+        "spatiotemporal prediction",
+        "spatiotemporal modeling"
+      ]
+    },
+    {
+      "id": "electronic-structure-theory",
+      "label": "Electronic Structure Theory",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "electronic structure",
+        "electronic structure dynamics",
+        "electronic structure theory"
+      ]
+    },
+    {
+      "id": "hardware-software-co-design",
+      "label": "Hardware-Software Co-Design",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "hardware-software co-design",
+        "hardware software co-design",
+        "hardware co-design"
+      ]
+    },
+    {
+      "id": "neural-operator-learning",
+      "label": "Neural Operator Learning",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "neural operators",
+        "neural operator learning",
+        "deep neural operators",
+        "operator learning"
+      ]
+    },
+    {
+      "id": "cyber-physical-systems",
+      "label": "Cyber-Physical Systems",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "cyber physical systems",
+        "cyber-physical systems",
+        "cyber-physical systems security",
+        "cyber-physical systems modeling"
+      ]
+    },
+    {
+      "id": "manufacturing-process-optimization",
+      "label": "Manufacturing & Process Optimization",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "manufacturing system optimization",
+        "manufacturing process optimization",
+        "manufacturing optimization",
+        "process optimization",
+        "process control optimization"
+      ]
+    },
+    {
+      "id": "fair-data-principles",
+      "label": "Fair Data Principles",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "fair data principles",
+        "fair data practices",
+        "fair data management"
+      ]
+    },
+    {
+      "id": "multiphase-flow-modeling",
+      "label": "Multiphase Flow Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "multiphase flow modeling",
+        "multiphase flow",
+        "multiphase flow analysis",
+        "multiphase flow simulation"
+      ]
+    },
+    {
+      "id": "knowledge-graph-systems",
+      "label": "Knowledge Graph Systems",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "knowledge graphs",
+        "knowledge graph querying",
+        "knowledge graph construction"
+      ]
+    },
+    {
+      "id": "real-time-feedback-control",
+      "label": "Real-Time Feedback Control",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "real-time control",
+        "real-time control systems",
+        "real-time predictive control",
+        "real-time feedback control",
+        "real-time feedback loops",
+        "closed-loop control",
+        "closed-loop feedback control",
+        "closed-loop ai control",
+        "human-in-the-loop systems",
+        "human-in-the-loop operation",
+        "human-in-the-loop control",
+        "human-in-the-loop feedback"
+      ]
+    },
+    {
+      "id": "physics-informed-ai-models",
+      "label": "Physics-Informed AI Models",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "physics-informed modeling",
+        "physics-based modeling",
+        "physics-informed ai models",
+        "physics-based models",
+        "physics-informed models",
+        "physics-informed ai",
+        "physics-aware ai",
+        "hybrid physics-ai systems",
+        "hybrid physics-ai models",
+        "hybrid ai-physics models",
+        "hybrid ai physics modeling"
+      ]
+    },
+    {
+      "id": "grid-optimization-resilience",
+      "label": "Grid Optimization & Resilience",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "smart grid optimization",
+        "power grid optimization",
+        "smart grid",
+        "power grid planning",
+        "grid control systems",
+        "power grid control",
+        "autonomous grid control",
+        "grid resilience analysis",
+        "grid resilience simulation",
+        "grid resilience"
+      ]
+    },
+    {
+      "id": "genotype-phenotype-prediction",
+      "label": "Genotype-Phenotype Prediction",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "genotype-to-phenotype mapping",
+        "genotype-to-phenotype prediction",
+        "genotype phenotype mapping",
+        "genotype-phenotype mapping",
+        "genotype-phenotype prediction",
+        "phenotype prediction",
+        "genotype phenotype inference",
+        "genotype to phenotype",
+        "clinical phenotype prediction"
+      ]
+    },
+    {
+      "id": "metagenomic-data-analysis",
+      "label": "Metagenomic Data Analysis",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "metagenomics",
+        "metagenomic data analysis",
+        "metagenomics data analysis",
+        "metagenomic sequence assembly",
+        "metagenomic analysis",
+        "metagenomics processing"
+      ]
+    },
+    {
+      "id": "bioreactor-design-optimization",
+      "label": "Bioreactor Design & Optimization",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "bioreactor optimization",
+        "bioreactor design",
+        "bioreactor design optimization",
+        "engineered bioreactors"
+      ]
+    },
+    {
+      "id": "nonlinear-dynamical-systems",
+      "label": "Nonlinear Dynamical Systems",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "nonlinear dynamical systems",
+        "nonlinear dynamics",
+        "dynamical systems",
+        "dynamical systems modeling"
+      ]
+    },
+    {
+      "id": "uncertainty-quantification-decision-making",
+      "label": "Uncertainty Quantification & Decision-Making",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "decision-making under uncertainty",
+        "decision making under uncertainty",
+        "autonomous decision-making under uncertainty",
+        "autonomous decision-making",
+        "uncertainty quantification",
+        "systematic uncertainty quantification",
+        "epistemic uncertainty quantification",
+        "bayesian uncertainty quantification"
+      ]
+    },
+    {
+      "id": "state-estimation",
+      "label": "State Estimation",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "real-time state estimation",
+        "state estimation",
+        "dynamic state estimation",
+        "state and parameter estimation"
+      ]
+    },
+    {
+      "id": "machine-learning-interatomic-potentials",
+      "label": "Machine Learning Interatomic Potentials",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "machine-learning interatomic potentials",
+        "machine learning interatomic potentials",
+        "machine learning atomic potentials"
+      ]
+    },
+    {
+      "id": "high-entropy-materials-design",
+      "label": "High-Entropy Materials Design",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "high-entropy materials",
+        "high-entropy materials design",
+        "high-entropy nanomaterials"
+      ]
+    },
+    {
+      "id": "ai-model-benchmarking",
+      "label": "AI Model Benchmarking",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "open-source benchmarking",
+        "performance benchmarking",
+        "reproducible benchmarking",
+        "model benchmarking",
+        "scalable benchmarking",
+        "benchmark development",
+        "model validation benchmarking",
+        "model evaluation benchmarks",
+        "ai model benchmarking",
+        "scientific ai benchmarking",
+        "ai benchmark design",
+        "ai benchmarking frameworks"
+      ]
+    },
+    {
+      "id": "performance-prediction-analysis",
+      "label": "Performance Prediction & Analysis",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "performance prediction models",
+        "performance modeling",
+        "performance prediction",
+        "predictive performance",
+        "predictive performance management",
+        "performance analysis",
+        "performance evaluation",
+        "performance measurement"
+      ]
+    },
+    {
+      "id": "remote-sensing-analytics",
+      "label": "Remote Sensing Analytics",
+      "categoryId": "environmental-geo",
+      "memberPhrases": [
+        "remote sensing",
+        "remote sensing analytics",
+        "satellite remote sensing"
+      ]
+    },
+    {
+      "id": "machine-learning-deep-learning",
+      "label": "Machine Learning & Deep Learning",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "machine learning",
+        "machine learning models",
+        "machine learning systems",
+        "machine learning algorithms",
+        "machine learning training",
+        "machine learning classification",
+        "deep learning",
+        "deep neural networks",
+        "deep learning models"
+      ]
+    },
+    {
+      "id": "biomanufacturing-automation",
+      "label": "Biomanufacturing Automation",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "biomanufacturing systems",
+        "biomanufacturing",
+        "biomanufacturing automation"
+      ]
+    },
+    {
+      "id": "bioprocess-scale-up",
+      "label": "Bioprocess Scale-Up",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "process scale-up",
+        "chemical process scale-up",
+        "process scale-up integration",
+        "process scaling",
+        "chemical process scaling",
+        "bioprocess scale-up",
+        "bioprocess scaling",
+        "bioprocess scale up"
+      ]
+    },
+    {
+      "id": "reduced-order-modeling",
+      "label": "Reduced-Order Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "reduced-order modeling",
+        "reduced-order models",
+        "reduced order modelling"
+      ]
+    },
+    {
+      "id": "optimal-control-reinforcement-learning",
+      "label": "Optimal Control & Reinforcement Learning",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "optimal control",
+        "optimal control theory",
+        "control optimization",
+        "reinforcement learning",
+        "reinforcement learning optimization",
+        "reinforcement learning control"
+      ]
+    },
+    {
+      "id": "high-energy-physics",
+      "label": "High Energy Physics",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "high energy physics",
+        "high-energy physics analysis",
+        "high-energy physics",
+        "high-energy-density physics"
+      ]
+    },
+    {
+      "id": "ai-cybersecurity",
+      "label": "AI Cybersecurity",
+      "categoryId": "responsible-trustworthy-ai",
+      "memberPhrases": [
+        "cybersecurity for ai",
+        "cybersecurity for ai systems",
+        "ai cybersecurity",
+        "ai-native cybersecurity",
+        "ot cybersecurity",
+        "cybersecurity",
+        "it/ot cybersecurity"
+      ]
+    },
+    {
+      "id": "multi-omics-data-integration",
+      "label": "Multi-Omics Data Integration",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "omics data analysis",
+        "multi-omics data",
+        "multi-omics data analysis",
+        "omics datasets",
+        "multi-omics datasets",
+        "multi-omics data integration",
+        "multi-omics analysis",
+        "multi-omics integration",
+        "omics data integration"
+      ]
+    },
+    {
+      "id": "condensed-matter-physics",
+      "label": "Condensed Matter Physics",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "condensed matter physics",
+        "condensed-matter physics",
+        "condensed matter theory"
+      ]
+    },
+    {
+      "id": "quantum-simulation-modeling",
+      "label": "Quantum Simulation & Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "quantum simulations",
+        "quantum simulators",
+        "quantum simulation",
+        "quantum-classical simulation",
+        "quantum mechanical modeling",
+        "quantum-classical modeling",
+        "quantum systems modeling"
+      ]
+    },
+    {
+      "id": "plasma-physics-control",
+      "label": "Plasma Physics & Control",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "plasma dynamics",
+        "plasma physics simulation",
+        "plasma physics",
+        "plasma physics expertise",
+        "real-time plasma control",
+        "plasma control",
+        "plasma control systems"
+      ]
+    },
+    {
+      "id": "data-pipeline-architecture",
+      "label": "Data Pipeline Architecture",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "data pipelines",
+        "data pipeline engineering",
+        "real-time data pipelines",
+        "data pipeline architecture",
+        "data integration pipelines",
+        "data pipelining",
+        "data pipeline automation",
+        "data pipeline orchestration"
+      ]
+    },
+    {
+      "id": "high-throughput-screening",
+      "label": "High-Throughput Screening",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "high-throughput screening",
+        "high-throughput computational screening",
+        "high throughput screening"
+      ]
+    },
+    {
+      "id": "terahertz-spectroscopy-sensing",
+      "label": "Terahertz Spectroscopy & Sensing",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "terahertz spectroscopy",
+        "terahertz sensing",
+        "terahertz characterization"
+      ]
+    },
+    {
+      "id": "hypothesis-generation-testing",
+      "label": "Hypothesis Generation & Testing",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "novel hypothesis generation",
+        "hypothesis generation",
+        "scientific hypothesis generation",
+        "hypothesis generation systems",
+        "hypothesis generation autonomous",
+        "computational hypothesis generation",
+        "llm-guided hypothesis generation",
+        "hypothesis generation and testing",
+        "hypothesis generation automation",
+        "hypothesis testing",
+        "experimental hypothesis testing"
+      ]
+    },
+    {
+      "id": "rare-earth-element-extraction",
+      "label": "Rare Earth Element Extraction",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "rare earth minerals extraction",
+        "rare earth extraction",
+        "rare earth element extraction",
+        "rare earth element recovery",
+        "rare earth elements",
+        "rare earth element independence"
+      ]
+    },
+    {
+      "id": "property-prediction-models",
+      "label": "Property Prediction Models",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "property prediction",
+        "structure-property prediction",
+        "machine learning property prediction",
+        "property prediction models"
+      ]
+    },
+    {
+      "id": "process-systems-engineering",
+      "label": "Process Systems Engineering",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "process engineering",
+        "process engineering integration",
+        "process systems engineering"
+      ]
+    },
+    {
+      "id": "x-ray-spectroscopy",
+      "label": "X-Ray Spectroscopy",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "x-ray spectroscopy",
+        "x-ray characterization",
+        "x-ray absorption spectroscopy"
+      ]
+    },
+    {
+      "id": "real-time-data-ingestion",
+      "label": "Real-Time Data Ingestion",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "data ingestion automation",
+        "real-time data ingestion",
+        "sensor-driven data ingestion"
+      ]
+    },
+    {
+      "id": "data-quality-assessment",
+      "label": "Data Quality Assessment",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "data quality assessment",
+        "data quality monitoring",
+        "data quality assurance",
+        "data quality studies"
+      ]
+    },
+    {
+      "id": "semiconductor-materials-devices",
+      "label": "Semiconductor Materials & Devices",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "semiconductor devices",
+        "semiconductor quantum devices",
+        "semiconductors",
+        "semiconductor materials",
+        "semiconductor materials characterization"
+      ]
+    },
+    {
+      "id": "edge-ai-inference",
+      "label": "Edge AI Inference",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "edge ai inference",
+        "edge ai",
+        "edge-based inference",
+        "edge intelligence",
+        "ai at the edge",
+        "edge inference platforms"
+      ]
+    },
+    {
+      "id": "fusion-energy-physics",
+      "label": "Fusion Energy Physics",
+      "categoryId": "energy-nuclear",
+      "memberPhrases": [
+        "magnetic fusion energy",
+        "fusion energy physics",
+        "fusion energy",
+        "fusion energy simulation",
+        "fusion energy modeling"
+      ]
+    },
+    {
+      "id": "llm-based-agents",
+      "label": "LLM-Based Agents",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "llm agents",
+        "llm-based agents",
+        "llm-driven agents",
+        "agentic llm systems",
+        "multi-agent llm systems"
+      ]
+    },
+    {
+      "id": "ai-accelerated-scientific-discovery",
+      "label": "AI-Accelerated Scientific Discovery",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "scientific discovery",
+        "autonomous scientific discovery",
+        "scientific knowledge discovery",
+        "ai-accelerated discovery",
+        "accelerated discovery",
+        "ai-accelerated biological discovery"
+      ]
+    },
+    {
+      "id": "aerospace-engineering-systems",
+      "label": "Aerospace Engineering & Systems",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "aerospace engineering",
+        "aerospace systems",
+        "aerospace manufacturing"
+      ]
+    },
+    {
+      "id": "systems-integration",
+      "label": "Systems Integration",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "systems integration",
+        "distributed systems integration",
+        "system integration"
+      ]
+    },
+    {
+      "id": "nuclear-materials-science",
+      "label": "Nuclear Materials Science",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "nuclear materials science",
+        "nuclear chemistry",
+        "nuclear materials analysis",
+        "nuclear materials",
+        "nuclear materials processing",
+        "nuclear physics",
+        "nuclear science",
+        "nuclear physics experiments",
+        "nuclear research"
+      ]
+    },
+    {
+      "id": "predictive-maintenance",
+      "label": "Predictive Maintenance",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "predictive maintenance",
+        "predictive maintenance ai",
+        "predictive maintenance systems",
+        "ai/ml predictive maintenance"
+      ]
+    },
+    {
+      "id": "iot-sensor-networks",
+      "label": "IoT Sensor Networks",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "iot sensor networks",
+        "iot sensor technology",
+        "iot data networks"
+      ]
+    },
+    {
+      "id": "climate-earth-systems-modeling",
+      "label": "Climate & Earth Systems Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "climate scenario modeling",
+        "climate modeling",
+        "climate systems modeling",
+        "climate systems",
+        "earth system modelling",
+        "earth system models",
+        "earth system modeling"
+      ]
+    },
+    {
+      "id": "geothermal-resource-development",
+      "label": "Geothermal Resource Development",
+      "categoryId": "environmental-geo",
+      "memberPhrases": [
+        "geothermal exploration",
+        "geothermal resources",
+        "geothermal project development",
+        "geothermal resource management"
+      ]
+    },
+    {
+      "id": "nanomaterial-synthesis",
+      "label": "Nanomaterial Synthesis",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "nanomaterials synthesis",
+        "nanoparticle synthesis",
+        "nanomaterial synthesis"
+      ]
+    },
+    {
+      "id": "biotechnology-applications",
+      "label": "Biotechnology Applications",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "biotechnology",
+        "environmental biotechnology",
+        "agricultural biotechnology",
+        "biotechnology research"
+      ]
+    },
+    {
+      "id": "ai-driven-materials-discovery",
+      "label": "AI-Driven Materials Discovery",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "ai-enabled materials design",
+        "ai for materials design",
+        "ai material synthesis",
+        "materials science ai",
+        "ai-driven materials discovery",
+        "autonomous materials discovery",
+        "ai-guided materials discovery",
+        "computational materials chemistry",
+        "computational chemistry",
+        "computational materials science",
+        "computational materials design"
+      ]
+    },
+    {
+      "id": "radiation-hardened-electronics",
+      "label": "Radiation-Hardened Electronics",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "radiation-hard electronics",
+        "radiation-hard devices",
+        "radiation-hardened electronics"
+      ]
+    },
+    {
+      "id": "multimodal-machine-learning",
+      "label": "Multimodal Machine Learning",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "multimodal data modeling",
+        "multimodal datasets",
+        "multimodal data analysis",
+        "multimodal processing",
+        "multimodal machine learning",
+        "multimodal perception",
+        "multimodal learning",
+        "multimodal representation learning"
+      ]
+    },
+    {
+      "id": "catalyst-design-optimization",
+      "label": "Catalyst Design & Optimization",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "catalyst design",
+        "catalyst optimization",
+        "catalyst design and synthesis"
+      ]
+    },
+    {
+      "id": "motion-planning-navigation",
+      "label": "Motion Planning & Navigation",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "motion planning",
+        "motion planning and control",
+        "path planning",
+        "real-time path planning",
+        "robotic navigation",
+        "autonomous navigation",
+        "robot navigation",
+        "autonomous robotic navigation"
+      ]
+    },
+    {
+      "id": "data-harmonization",
+      "label": "Data Harmonization",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "data harmonization",
+        "dataset harmonization",
+        "data harmonization pipelines"
+      ]
+    },
+    {
+      "id": "process-simulation-modeling",
+      "label": "Process Simulation & Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "process simulation",
+        "manufacturing process simulation",
+        "industrial process simulation",
+        "manufacturing simulation",
+        "simulation and modeling",
+        "simulation modeling",
+        "simulation-based modeling"
+      ]
+    },
+    {
+      "id": "classified-environment-operations",
+      "label": "Classified Environment Operations",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "classified environment operations",
+        "classified environment deployment",
+        "classified environments"
+      ]
+    },
+    {
+      "id": "wave-propagation-simulation",
+      "label": "Wave Propagation Simulation",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "wave simulation",
+        "elastic wave simulation",
+        "wave propagation simulation"
+      ]
+    },
+    {
+      "id": "wireless-communications",
+      "label": "Wireless Communications",
+      "categoryId": "physics-engineering",
+      "memberPhrases": [
+        "wireless communications",
+        "wireless communication",
+        "wireless networks"
+      ]
+    },
+    {
+      "id": "kinetic-modeling-simulation",
+      "label": "Kinetic Modeling & Simulation",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "kinetic modeling",
+        "kinetic domain modeling",
+        "reaction kinetics modeling",
+        "kinetic simulation"
+      ]
+    },
+    {
+      "id": "cross-institutional-data-sharing",
+      "label": "Cross-Institutional Data Sharing",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "cross-institutional data sharing",
+        "cross-institutional data integration",
+        "cross-institution data sharing"
+      ]
+    },
+    {
+      "id": "turbulence-modeling-simulation",
+      "label": "Turbulence Modeling & Simulation",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "turbulence simulation",
+        "turbulence modeling",
+        "turbulence analysis",
+        "atmospheric turbulence modeling",
+        "turbulent flow analysis"
+      ]
+    },
+    {
+      "id": "distributed-energy-systems",
+      "label": "Distributed Energy Systems",
+      "categoryId": "energy-nuclear",
+      "memberPhrases": [
+        "distributed energy systems",
+        "distributed energy resources",
+        "energy-efficient distributed systems"
+      ]
+    },
+    {
+      "id": "reward-model-development",
+      "label": "Reward Model Development",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "reward model development",
+        "reward modeling",
+        "reward models"
+      ]
+    },
+    {
+      "id": "microbiome-ecology-analysis",
+      "label": "Microbiome Ecology & Analysis",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "microbial ecology",
+        "microbial communities",
+        "microbial macroecology",
+        "microbiome science",
+        "microbiome characterization",
+        "microbiome analysis"
+      ]
+    },
+    {
+      "id": "document-extraction",
+      "label": "Document Extraction",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "document extraction",
+        "document extraction pipeline",
+        "text extraction"
+      ]
+    },
+    {
+      "id": "data-center-optimization",
+      "label": "Data Center Optimization",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "data center optimization",
+        "data center power optimization",
+        "data center design"
+      ]
+    },
+    {
+      "id": "time-series-signal-processing",
+      "label": "Time-Series Signal Processing",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "time-series data processing",
+        "time-series processing",
+        "time-series signal processing"
+      ]
+    },
+    {
+      "id": "hpc-infrastructure-optimization",
+      "label": "HPC Infrastructure & Optimization",
+      "categoryId": "computing-infrastructure",
+      "memberPhrases": [
+        "hpc workload optimization",
+        "hpc workloads",
+        "hpc performance optimization",
+        "hpc workload acceleration",
+        "hpc scalability",
+        "hpc infrastructure",
+        "hpc systems",
+        "hpc infrastructure access",
+        "hpc network operations"
+      ]
+    },
+    {
+      "id": "protein-structure-function-prediction",
+      "label": "Protein Structure-Function Prediction",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "protein structure-function prediction",
+        "protein function prediction",
+        "protein structure prediction"
+      ]
+    },
+    {
+      "id": "plant-microbe-interactions",
+      "label": "Plant-Microbe Interactions",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "plant-microbe interactions",
+        "soil microbe plant interactions",
+        "plant-microbe dynamics"
+      ]
+    },
+    {
+      "id": "particle-accelerator-control",
+      "label": "Particle Accelerator Control",
+      "categoryId": "ai-ml-foundations",
+      "memberPhrases": [
+        "particle accelerator control",
+        "particle accelerators",
+        "accelerator control",
+        "ai accelerator architecture",
+        "ai accelerators",
+        "custom ai accelerators"
+      ]
+    },
+    {
+      "id": "swarm-robotics-intelligence",
+      "label": "Swarm Robotics & Intelligence",
+      "categoryId": "autonomous-systems",
+      "memberPhrases": [
+        "swarm autonomy",
+        "swarm robotics",
+        "swarm intelligence"
+      ]
+    },
+    {
+      "id": "extreme-environment-materials",
+      "label": "Extreme Environment Materials",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "extreme environment materials",
+        "materials under extreme environments",
+        "extreme conditions materials"
+      ]
+    },
+    {
+      "id": "scientific-data-visualization",
+      "label": "Scientific Data Visualization",
+      "categoryId": "data-management",
+      "memberPhrases": [
+        "scientific visualization",
+        "scientific visualization generation",
+        "scientific data visualization",
+        "data visualization"
+      ]
+    },
+    {
+      "id": "computational-modeling",
+      "label": "Computational Modeling",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "computational modeling",
+        "computational models",
+        "mathematical modeling",
+        "multiscale modeling",
+        "multi-scale modeling",
+        "multiscale systems modeling"
+      ]
+    },
+    {
+      "id": "ai-guided-optimization",
+      "label": "AI-Guided Optimization",
+      "categoryId": "experimental-automation",
+      "memberPhrases": [
+        "constrained optimization",
+        "constraint optimization",
+        "nonlinearly constrained optimization",
+        "nonlinear optimization",
+        "ai-enabled optimization",
+        "ai-assisted optimization",
+        "ai optimization",
+        "ai-guided optimization",
+        "closed-loop optimization",
+        "closed-loop ml optimization",
+        "closed-loop process optimization",
+        "closed-loop design optimization"
+      ]
+    },
+    {
+      "id": "genomics-data-integration",
+      "label": "Genomics Data Integration",
+      "categoryId": "biological-genomics",
+      "memberPhrases": [
+        "genomics analysis",
+        "genomics data analysis",
+        "genomics",
+        "genomic integration",
+        "genomic data integration",
+        "genomics data integration"
+      ]
+    },
+    {
+      "id": "microelectronics-fabrication-materials",
+      "label": "Microelectronics Fabrication & Materials",
+      "categoryId": "materials-discovery",
+      "memberPhrases": [
+        "microelectronics fabrication",
+        "microelectronics materials",
+        "microelectronics manufacturing"
+      ]
+    },
+    {
+      "id": "protein-ligand-binding",
+      "label": "Protein-Ligand Binding",
+      "categoryId": "scientific-simulation",
+      "memberPhrases": [
+        "protein-ligand binding",
+        "protein-ligand interactions",
+        "protein-ligand binding affinity"
+      ]
+    }
+  ]
+}

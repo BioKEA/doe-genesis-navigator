@@ -12,6 +12,7 @@
     "concepts:cluster": "tsx scripts/concepts/03-cluster.ts",
     "concepts:label": "tsx --env-file=.env scripts/concepts/04-label.ts",
     "curate": "tsx scripts/concepts/curate.ts",
+    "concepts:retag": "tsx --env-file=.env scripts/concepts/05-retag.ts",
     "build": "npm run parse && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
