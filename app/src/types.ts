@@ -81,3 +81,21 @@ export interface ConceptsArtifact {
 }
 
 export type ProfileConceptMap = Record<string, ConceptId[]>;
+
+// --- Match layer (Plan 2 of the knowledge-graph redesign) ---
+
+export interface ProfileFieldConcepts {
+  offer: ConceptId[];
+  seek: ConceptId[];
+}
+
+export type ProfileFieldConceptsMap = Record<string /* slug */, ProfileFieldConcepts>;
+
+export interface Match {
+  from: string;          // source partner slug — A's offer feeds this match
+  to: string;            // target partner slug — B's seek feeds this match
+  score: number;         // 0.5..1.0 (rows below 0.5 are dropped)
+  rationale: string;     // one-sentence explanation
+  sharedConcepts: ConceptId[];
+  reciprocal: boolean;   // true iff the (to → from) reverse direction also kept
+}

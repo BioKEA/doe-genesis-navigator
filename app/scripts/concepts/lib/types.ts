@@ -53,3 +53,7 @@ export interface ConceptsArtifact {
 }
 
 export type ProfileConceptMap = Record<string /* slug */, ConceptId[]>;
+
+// Match types — re-exported for pipeline scripts to consume
+// (canonical definitions live in app/src/types.ts)
+export type { Match, ProfileFieldConcepts, ProfileFieldConceptsMap } from "../../../src/types";
