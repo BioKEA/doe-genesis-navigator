@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "parse": "tsx scripts/parse.ts",
+    "scrape": "tsx scripts/scrape.ts",
     "build": "npm run parse && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
