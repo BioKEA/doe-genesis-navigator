@@ -23,6 +23,8 @@ import { inferKind } from "./lib/infer-kind";
 import { buildEdges, topNeighbors } from "./lib/similarity";
 import { buildSearchIndex } from "./lib/search-index";
 import { attachConceptIds } from "./concepts/lib/merge";
+import { topKMatchesPerPartner } from "./matches/lib/matches-merge";
+import type { Match } from "../src/types";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SOURCE_DIR = resolve(__dirname, "../../detail-pages");
@@ -109,6 +111,20 @@ function main() {
     console.log(`merged ${concepts.concepts.length} concepts, tagged ${Object.keys(map).length} profiles`);
   } else {
     console.log("no concepts.json found — skipping concept merge (run npm run concepts first)");
+  }
+
+  // Merge match layer if available (Plan 2 of the knowledge-graph redesign)
+  const MATCHES_PATH = resolve(__dirname, "../data-source/matches.json");
+  if (existsSync(MATCHES_PATH)) {
+    const matches = JSON.parse(readFileSync(MATCHES_PATH, "utf8")) as Match[];
+    // Cap to top-20 per partner for shipping (runtime slider goes 3-20).
+    const trimmed = topKMatchesPerPartner(matches, 20);
+    writeFileSync(join(OUT_DIR, "matches.json"), JSON.stringify(trimmed));
+    console.log(
+      `merged ${matches.length} matches → ${trimmed.length} after top-20 cap`,
+    );
+  } else {
+    console.log("no matches.json found — skipping match merge (run npm run matches first)");
   }
 
   const neighbors = topNeighbors(mergedProfiles, 6);
