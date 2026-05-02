@@ -17,6 +17,7 @@
     "matches:candidates": "tsx scripts/matches/02-candidates.ts",
     "matches:score": "tsx --env-file=.env scripts/matches/03-score.ts",
     "matches:finalize": "tsx scripts/matches/04-finalize.ts",
+    "matches": "npm run matches:retag-fields && npm run matches:candidates && npm run matches:score && npm run matches:finalize",
     "concepts": "npm run concepts:extract && npm run concepts:embed && npm run concepts:cluster && npm run concepts:label && echo '\\nNext: run \"npm run curate\" to curate the concept layer, then \"npm run concepts:retag\".'",
     "build": "npm run parse && tsc -b && vite build",
     "lint": "eslint .",

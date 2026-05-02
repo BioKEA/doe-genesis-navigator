@@ -64,6 +64,29 @@ input SHA — partial failures and reruns are free.
 The committed artifacts are picked up automatically by `npm run parse`.
 Vercel's build never needs `ANTHROPIC_API_KEY`.
 
+## Match scoring pipeline (one-shot, offline)
+
+Once the concept layer is in place (above), this pipeline produces directional
+offer→seek match edges with rationales — the data layer for the C overlay in
+the Canvas UI.
+
+````bash
+# 1. Run the full chain (retag fields → candidates → score → finalize)
+npm run matches                     # ~30-60 min, ~$50 in Haiku
+
+# 2. Commit the artifacts
+git add app/data-source/profile-field-concepts.json \
+        app/data-source/matches.json
+git commit -m "data(matches): refresh match layer"
+````
+
+Same caching + idempotency story as the concepts pipeline (`app/build/llm-cache/`
+keyed by input SHA, gitignored).
+
+`npm run parse` picks up `matches.json` automatically and copies a top-20-per-partner
+trimmed version to `app/public/data/` for the runtime to consume. Vercel's build
+never needs `ANTHROPIC_API_KEY`.
+
 ## Deploy to Vercel (Hobby / free tier)
 
 Two options.
