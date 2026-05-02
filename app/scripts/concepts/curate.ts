@@ -38,16 +38,27 @@ function loadInitialState(): CurationState {
     candidates: ConceptCandidate[];
   };
   const used = new Set<string>();
+  const fallbackCat = cand.categories[0]?.id ?? "uncategorized";
   const concepts: CurationConcept[] = cand.candidates.map((c) => {
-    let id = slugify(c.suggestedLabel);
+    // Defensive: LLM occasionally returns a candidate with no label/category.
+    // Fall back to the first member phrase (titleized) and the first category.
+    const rawLabel = (c.suggestedLabel && c.suggestedLabel.trim().length > 0)
+      ? c.suggestedLabel
+      : (c.members[0] ?? `cluster-${c.clusterId}`);
+    const label = rawLabel.replace(/\b\w/g, (m) => m.toUpperCase());
+    const categoryId = c.suggestedCategory && c.suggestedCategory.trim().length > 0
+      ? c.suggestedCategory
+      : fallbackCat;
+
+    let id = slugify(label) || `cluster-${c.clusterId}`;
     let n = 2;
     const root = id;
     while (used.has(id)) id = `${root}-${n++}`;
     used.add(id);
     return {
       id,
-      label: c.suggestedLabel,
-      categoryId: c.suggestedCategory,
+      label,
+      categoryId,
       memberPhrases: c.members,
     };
   });
