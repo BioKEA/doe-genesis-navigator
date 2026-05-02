@@ -11,6 +11,7 @@
     "concepts:embed": "tsx scripts/concepts/02-embed.ts",
     "concepts:cluster": "tsx scripts/concepts/03-cluster.ts",
     "concepts:label": "tsx --env-file=.env scripts/concepts/04-label.ts",
+    "curate": "tsx scripts/concepts/curate.ts",
     "build": "npm run parse && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

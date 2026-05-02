@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Concept Curation</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; background: #f8fafc; color: #0f172a; }
+  header { background: #1e293b; color: #f1f5f9; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0; }
+  header .stat { font-size: 12px; color: #94a3b8; margin-left: auto; }
+  header .filter, header .add-cat-btn { background: #0f172a; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+  header .add-cat-btn:hover { background: #2563eb; color: #fff; }
+  header .filter { width: 220px; }
+  main { padding: 16px 20px; max-width: 1100px; }
+  .row { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; display: grid; grid-template-columns: 1fr 200px 130px; gap: 12px; align-items: center; }
+  .row.dropped { opacity: 0.4; }
+  .row .label-input { font-weight: 600; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 13px; }
+  .row select { padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 12px; }
+  .row .actions { display: flex; gap: 6px; justify-content: flex-end; }
+  .row button { padding: 4px 10px; border: 1px solid #cbd5e1; border-radius: 4px; background: #fff; cursor: pointer; font-size: 11px; }
+  .row button.drop { color: #b91c1c; }
+  .row .members { grid-column: 1 / -1; font-size: 11px; color: #64748b; padding-top: 4px; line-height: 1.4; }
+  .merge-pick { background: #fef3c7; border-color: #f59e0b !important; }
+  .saved-pulse { animation: pulse 0.5s ease-out; }
+  @keyframes pulse { from { background: #dcfce7; } to { background: #fff; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Concept Curation</h1>
+  <input class="filter" id="filter" placeholder="filter by label or member phrase…">
+  <button class="add-cat-btn" id="add-cat">+ New category</button>
+  <span class="stat" id="stat">…</span>
+</header>
+<main id="rows"></main>
+<script>
+async function load() { return (await fetch("/state")).json(); }
+async function save(state) {
+  await fetch("/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(state) });
+}
+let state;          // { categories: [...], concepts: [{id, label, categoryId, dropped, members}] }
+let mergeSource = null;
+let filter = "";
+
+function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+function render() {
+  const main = document.getElementById("rows");
+  main.innerHTML = "";
+  const live = state.concepts.filter((c) => !c.dropped).length;
+  document.getElementById("stat").textContent = `${live} live · ${state.concepts.length - live} dropped · ${state.categories.length} categories`;
+
+  const f = filter.trim().toLowerCase();
+  const visible = !f
+    ? state.concepts
+    : state.concepts.filter((c) =>
+        c.label.toLowerCase().includes(f) || c.members.some((m) => m.toLowerCase().includes(f))
+      );
+
+  for (const c of visible) {
+    const row = document.createElement("div");
+    row.className = "row" + (c.dropped ? " dropped" : "") + (mergeSource === c.id ? " merge-pick" : "");
+    row.dataset.id = c.id;
+
+    const label = document.createElement("input");
+    label.className = "label-input";
+    label.value = c.label;
+    label.oninput = () => { c.label = label.value; persist(row); };
+
+    const cat = document.createElement("select");
+    for (const k of state.categories) {
+      const opt = document.createElement("option");
+      opt.value = k.id; opt.textContent = k.label;
+      if (k.id === c.categoryId) opt.selected = true;
+      cat.appendChild(opt);
+    }
+    cat.onchange = () => { c.categoryId = cat.value; persist(row); };
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+
+    const dropBtn = document.createElement("button");
+    dropBtn.className = "drop";
+    dropBtn.textContent = c.dropped ? "Restore" : "Drop";
+    dropBtn.onclick = () => { c.dropped = !c.dropped; persist(); render(); };
+
+    const mergeBtn = document.createElement("button");
+    mergeBtn.textContent = mergeSource === c.id
+      ? "Cancel"
+      : (mergeSource ? "Merge here" : "Merge…");
+    mergeBtn.onclick = () => {
+      if (mergeSource === c.id) { mergeSource = null; render(); return; }
+      if (mergeSource) {
+        const src = state.concepts.find((x) => x.id === mergeSource);
+        c.members = [...new Set([...c.members, ...src.members])];
+        src.dropped = true;
+        mergeSource = null;
+        persist(); render();
+      } else {
+        mergeSource = c.id; render();
+      }
+    };
+
+    actions.appendChild(dropBtn);
+    actions.appendChild(mergeBtn);
+
+    const members = document.createElement("div");
+    members.className = "members";
+    members.textContent = `members (${c.members.length}): ${c.members.slice(0, 14).join(", ")}${c.members.length > 14 ? "…" : ""}`;
+
+    row.appendChild(label);
+    row.appendChild(cat);
+    row.appendChild(actions);
+    row.appendChild(members);
+    main.appendChild(row);
+  }
+}
+
+let saveTimer = null;
+function persist(highlightRow) {
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    await save(state);
+    if (highlightRow) {
+      highlightRow.classList.add("saved-pulse");
+      setTimeout(() => highlightRow.classList.remove("saved-pulse"), 500);
+    }
+  }, 250);
+}
+
+document.getElementById("filter").addEventListener("input", (e) => {
+  filter = e.target.value;
+  render();
+});
+
+document.getElementById("add-cat").addEventListener("click", () => {
+  const label = prompt("New category name (Title Case):");
+  if (!label || !label.trim()) return;
+  const id = slug(label);
+  if (state.categories.some((c) => c.id === id)) {
+    alert(`Category "${id}" already exists.`);
+    return;
+  }
+  state.categories.push({ id, label: label.trim() });
+  persist();
+  render();
+});
+
+(async () => {
+  state = await load();
+  render();
+})();
+</script>
+</body>
+</html>
