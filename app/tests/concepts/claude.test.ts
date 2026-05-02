@@ -53,4 +53,28 @@ describe("createClaude", () => {
     const claude = createClaude({ apiKey: "test", cacheDir: dir });
     expect(await claude.askJson({ system: "s", user: "u" })).toEqual({ a: 1 });
   });
+
+  it("strips fences with leading/trailing whitespace", async () => {
+    createMessage.mockResolvedValueOnce({
+      content: [{ type: "text", text: "  \n```json\n{\"a\": 1}\n```\n  " }],
+    });
+    const claude = createClaude({ apiKey: "test", cacheDir: dir });
+    expect(await claude.askJson({ system: "s", user: "u" })).toEqual({ a: 1 });
+  });
+
+  it("falls back to bracket bounds when fence is unclosed", async () => {
+    createMessage.mockResolvedValueOnce({
+      content: [{ type: "text", text: "```json\n{\"a\": 2}\n" }],
+    });
+    const claude = createClaude({ apiKey: "test", cacheDir: dir });
+    expect(await claude.askJson({ system: "s", user: "u" })).toEqual({ a: 2 });
+  });
+
+  it("falls back to bracket bounds when no fence at all", async () => {
+    createMessage.mockResolvedValueOnce({
+      content: [{ type: "text", text: "Sure! Here it is:\n{\"a\": 3}\nLet me know if you need more." }],
+    });
+    const claude = createClaude({ apiKey: "test", cacheDir: dir });
+    expect(await claude.askJson({ system: "s", user: "u" })).toEqual({ a: 3 });
+  });
 });

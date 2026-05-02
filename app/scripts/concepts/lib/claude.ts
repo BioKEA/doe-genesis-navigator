@@ -19,8 +19,17 @@ export interface Claude {
 const DEFAULT_MODEL = "claude-haiku-4-5-20251001";
 
 function stripFences(text: string): string {
-  const fenced = text.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/);
-  return fenced ? fenced[1] : text;
+  const trimmed = text.trim();
+  // Properly fenced: ```json ... ``` (or ``` ... ```)
+  const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/);
+  if (fenced) return fenced[1];
+  // Fallback: response had an opening fence but no closing one (or no fences
+  // at all). Carve out the JSON object/array by its outermost brackets.
+  const firstBrace = trimmed.search(/[{[]/);
+  if (firstBrace === -1) return text;
+  const lastBrace = Math.max(trimmed.lastIndexOf("}"), trimmed.lastIndexOf("]"));
+  if (lastBrace > firstBrace) return trimmed.slice(firstBrace, lastBrace + 1);
+  return text;
 }
 
 export function createClaude(opts: ClaudeOptions): Claude {

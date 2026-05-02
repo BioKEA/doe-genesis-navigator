@@ -298,8 +298,23 @@
     ]
   },
   "alireza-haghighat": {
-    "offer": [],
-    "seek": []
+    "offer": [
+      "physics-informed-machine-learning",
+      "digital-twin-systems",
+      "nuclear-reactor-design-engineering",
+      "ai-ml-model-development",
+      "real-time-feedback-control",
+      "uncertainty-quantification-decision-making",
+      "high-performance-computing",
+      "state-estimation",
+      "cyber-physical-systems",
+      "explainable-ai-scientific-reasoning"
+    ],
+    "seek": [
+      "ai-ml-model-development",
+      "trustworthy-ai-systems",
+      "explainable-ai-scientific-reasoning"
+    ]
   },
   "amal-gueroudji": {
     "offer": [
@@ -943,7 +958,11 @@
     ]
   },
   "bgs-vice-president-energy-environment-maria-elena-crespo": {
-    "offer": [],
+    "offer": [
+      "grid-optimization-resilience",
+      "distributed-energy-systems",
+      "systems-integration"
+    ],
     "seek": []
   },
   "bhupendra": {
@@ -1259,8 +1278,16 @@
     ]
   },
   "caitlin-lancaster": {
-    "offer": [],
-    "seek": []
+    "offer": [
+      "ai-ml-model-development",
+      "language-vision-models",
+      "llm-based-agents",
+      "explainable-ai-scientific-reasoning",
+      "systems-integration"
+    ],
+    "seek": [
+      "systems-integration"
+    ]
   },
   "cancan": {
     "offer": [
@@ -2189,7 +2216,13 @@
   },
   "desert-research-institute": {
     "offer": [],
-    "seek": []
+    "seek": [
+      "ai-ml-model-development",
+      "machine-learning-deep-learning",
+      "cloud-data-infrastructure",
+      "petabyte-scale-data-infrastructure",
+      "data-pipeline-architecture"
+    ]
   },
   "devon-stork": {
     "offer": [
@@ -2404,15 +2437,36 @@
     ]
   },
   "dr-m-ilhan-akbas": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "machine-learning-deep-learning",
+      "autonomous-laboratory-systems",
+      "robotic-manipulation",
+      "embodied-ai-systems",
+      "trustworthy-ai-systems",
+      "adversarial-robustness-testing"
+    ],
     "seek": []
   },
   "dr-maria-burns": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "trustworthy-ai-systems",
+      "cyber-physical-systems",
+      "grid-optimization-resilience",
+      "ai-cybersecurity",
+      "remote-sensing-analytics",
+      "data-pipeline-architecture",
+      "uncertainty-quantification-decision-making"
+    ],
     "seek": []
   },
   "dr-olaide-nathaniel": {
-    "offer": [],
+    "offer": [
+      "machine-learning-deep-learning",
+      "ai-ml-model-development",
+      "foundation-models"
+    ],
     "seek": []
   },
   "drivendata-llc": {
@@ -2843,7 +2897,14 @@
     ]
   },
   "flavio-ponzina": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "edge-computing-deployment",
+      "high-performance-computing",
+      "gpu-computing-infrastructure",
+      "hpc-infrastructure-optimization",
+      "heterogeneous-computing-systems"
+    ],
     "seek": []
   },
   "florin-rusu": {
@@ -3566,7 +3627,15 @@
     ]
   },
   "james-chen-ub": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "physics-informed-ai-models",
+      "property-prediction-models",
+      "uncertainty-quantification-decision-making",
+      "probabilistic-inference-modeling",
+      "materials-discovery-property-prediction",
+      "manufacturing-process-optimization"
+    ],
     "seek": []
   },
   "james-d-whitfield": {
@@ -3948,7 +4017,15 @@
     ]
   },
   "junjie-hu": {
-    "offer": [],
+    "offer": [
+      "foundation-models",
+      "language-vision-models",
+      "multimodal-machine-learning",
+      "ai-ml-model-development",
+      "trustworthy-ai-systems",
+      "active-learning-systems",
+      "ai-model-benchmarking"
+    ],
     "seek": []
   },
   "junzhe-zhang": {
@@ -4279,7 +4356,18 @@
     ]
   },
   "lenny-guo": {
-    "offer": [],
+    "offer": [
+      "generative-ai-modeling",
+      "ai-ml-model-development",
+      "machine-learning-deep-learning",
+      "high-performance-computing",
+      "gpu-computing-infrastructure",
+      "cloud-data-infrastructure",
+      "scientific-workflow-orchestration",
+      "data-pipeline-architecture",
+      "petabyte-scale-data-infrastructure",
+      "scientific-data-curation"
+    ],
     "seek": []
   },
   "leonard-newman": {
@@ -4437,7 +4525,17 @@
     ]
   },
   "lomasney-mattis": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "materials-discovery-property-prediction",
+      "scientific-data-curation",
+      "cloud-data-infrastructure",
+      "high-performance-computing",
+      "energy-storage-systems",
+      "ai-driven-materials-discovery",
+      "physics-informed-machine-learning",
+      "scientific-workflow-orchestration"
+    ],
     "seek": []
   },
   "loop-scientific": {
@@ -6082,7 +6180,14 @@
     ]
   },
   "power-analytics-global-corp": {
-    "offer": [],
+    "offer": [
+      "llm-based-agents",
+      "ai-ml-model-development",
+      "foundation-models",
+      "cloud-data-infrastructure",
+      "data-pipeline-architecture",
+      "optimal-control-reinforcement-learning"
+    ],
     "seek": []
   },
   "prashnna-gyawali": {
@@ -6861,8 +6966,17 @@
     ]
   },
   "sarah-fritts": {
-    "offer": [],
-    "seek": []
+    "offer": [
+      "ai-ml-model-development",
+      "machine-learning-deep-learning",
+      "edge-ai-inference",
+      "ai-accelerated-scientific-discovery"
+    ],
+    "seek": [
+      "edge-ai-inference",
+      "iot-sensor-networks",
+      "real-time-data-ingestion"
+    ]
   },
   "sasha-davydov": {
     "offer": [
@@ -7420,7 +7534,9 @@
     ]
   },
   "sonia-singh": {
-    "offer": [],
+    "offer": [
+      "semiconductor-materials-devices"
+    ],
     "seek": []
   },
   "soumitra": {
@@ -7763,7 +7879,10 @@
     ]
   },
   "tadej-kolmanic": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "llm-based-agents"
+    ],
     "seek": []
   },
   "tahir-ekin-texas-state-university": {
@@ -8133,8 +8252,42 @@
     ]
   },
   "university-florida": {
-    "offer": [],
-    "seek": []
+    "offer": [
+      "ai-ml-model-development",
+      "foundation-models",
+      "digital-twin-systems",
+      "llm-based-agents",
+      "ai-accelerated-scientific-discovery",
+      "materials-discovery-property-prediction",
+      "ai-driven-materials-discovery",
+      "gpu-computing-infrastructure",
+      "high-performance-computing",
+      "cloud-data-infrastructure",
+      "scientific-data-curation",
+      "trustworthy-ai-systems",
+      "ai-cybersecurity",
+      "quantum-computing-algorithms",
+      "physics-informed-machine-learning"
+    ],
+    "seek": [
+      "ai-ml-model-development",
+      "foundation-models",
+      "digital-twin-systems",
+      "llm-based-agents",
+      "ai-accelerated-scientific-discovery",
+      "materials-discovery-property-prediction",
+      "ai-driven-materials-discovery",
+      "gpu-computing-infrastructure",
+      "high-performance-computing",
+      "cloud-data-infrastructure",
+      "scientific-data-curation",
+      "trustworthy-ai-systems",
+      "ai-cybersecurity",
+      "quantum-computing-algorithms",
+      "scientific-workflow-orchestration",
+      "active-learning-systems",
+      "physics-informed-machine-learning"
+    ]
   },
   "university-louisville": {
     "offer": [
@@ -8241,11 +8394,83 @@
     ]
   },
   "university-utah": {
-    "offer": [],
+    "offer": [
+      "ai-ml-model-development",
+      "trustworthy-ai-systems",
+      "responsible-ai-governance",
+      "high-performance-computing",
+      "gpu-computing-infrastructure",
+      "cloud-data-infrastructure",
+      "digital-twin-systems",
+      "physics-informed-machine-learning",
+      "ai-accelerated-scientific-discovery",
+      "foundation-models",
+      "language-vision-models",
+      "explainable-ai-scientific-reasoning",
+      "uncertainty-quantification-decision-making",
+      "scientific-data-curation",
+      "petabyte-scale-data-infrastructure",
+      "data-pipeline-architecture",
+      "data-quality-assessment",
+      "provenance-tracking-verification",
+      "scientific-reproducibility",
+      "heterogeneous-computing-systems",
+      "hpc-infrastructure-optimization",
+      "autonomous-laboratory-systems",
+      "experimental-design-optimization",
+      "active-learning-systems",
+      "materials-discovery-property-prediction",
+      "ai-driven-materials-discovery",
+      "computational-modeling",
+      "surrogate-modeling",
+      "process-simulation-modeling",
+      "optimal-control-reinforcement-learning",
+      "grid-optimization-resilience",
+      "distributed-energy-systems",
+      "energy-storage-systems",
+      "nuclear-reactor-design-engineering",
+      "fusion-energy-physics",
+      "nuclear-materials-science",
+      "critical-minerals-research",
+      "rare-earth-element-extraction",
+      "high-throughput-screening",
+      "hypothesis-generation-testing",
+      "multimodal-machine-learning",
+      "systems-integration",
+      "cyber-physical-systems",
+      "iot-sensor-networks"
+    ],
     "seek": []
   },
   "university-wisconsin-madison": {
-    "offer": [],
+    "offer": [
+      "high-performance-computing",
+      "scientific-workflow-orchestration",
+      "ai-ml-model-development",
+      "physics-informed-machine-learning",
+      "cloud-data-infrastructure",
+      "gpu-computing-infrastructure",
+      "petabyte-scale-data-infrastructure",
+      "federated-data-infrastructure",
+      "heterogeneous-computing-systems",
+      "scientific-reproducibility",
+      "trustworthy-ai-systems",
+      "autonomous-laboratory-systems",
+      "materials-discovery-property-prediction",
+      "active-learning-systems",
+      "quantum-computing-algorithms",
+      "fusion-energy-physics",
+      "plasma-physics-control",
+      "nuclear-reactor-design-engineering",
+      "high-energy-physics",
+      "semiconductor-materials-devices",
+      "ai-accelerated-scientific-discovery",
+      "explainable-ai-scientific-reasoning",
+      "responsible-ai-governance",
+      "data-pipeline-architecture",
+      "scientific-data-curation",
+      "systems-integration"
+    ],
     "seek": []
   },
   "university-wisconsin-milwaukee": {
@@ -8730,7 +8955,13 @@
     ]
   },
   "xin-wang": {
-    "offer": [],
+    "offer": [
+      "machine-learning-deep-learning",
+      "ai-ml-model-development",
+      "state-estimation",
+      "predictive-maintenance",
+      "grid-optimization-resilience"
+    ],
     "seek": []
   },
   "xinqiang-ding": {
