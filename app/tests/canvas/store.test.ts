@@ -6,7 +6,7 @@ describe("useCanvasStore", () => {
     useCanvasStore.setState({
       selectedNode: null,
       hoverNode: null,
-      matchOverlayOn: true,
+      matchOverlayOn: false,
       topK: 8,
       reciprocityHighlight: true,
       conceptCategoryFilter: new Set(),
@@ -16,7 +16,7 @@ describe("useCanvasStore", () => {
   it("starts with sensible defaults", () => {
     const s = useCanvasStore.getState();
     expect(s.selectedNode).toBeNull();
-    expect(s.matchOverlayOn).toBe(true);
+    expect(s.matchOverlayOn).toBe(false);
     expect(s.topK).toBe(8);
     expect(s.reciprocityHighlight).toBe(true);
   });

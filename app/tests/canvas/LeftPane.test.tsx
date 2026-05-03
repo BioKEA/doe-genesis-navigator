@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { render, fireEvent, screen } from "@testing-library/react";
 import { LeftPane } from "../../src/canvas/LeftPane";
 import { useCanvasStore } from "../../src/canvas/lib/store";
@@ -8,7 +8,7 @@ const categories = [
   { id: "science", label: "Science", count: 25 },
 ];
 
-afterEach(() => {
+beforeEach(() => {
   useCanvasStore.setState({
     matchOverlayOn: true,
     topK: 8,

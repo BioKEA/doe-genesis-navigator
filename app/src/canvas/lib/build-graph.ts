@@ -39,8 +39,8 @@ export function buildGraph(data: CanvasData): Graph<NodeAttrs, EdgeAttrs> {
       if (!conceptIds.has(id)) continue;
       g.addEdge(`partner:${slug}`, `concept:${id}`, {
         kind: "bipartite",
-        color: "rgba(229,231,235,0.45)",
-        size: 0.6,
+        color: "rgba(255,255,255,0.10)",
+        size: 0.3,
       });
     }
   }

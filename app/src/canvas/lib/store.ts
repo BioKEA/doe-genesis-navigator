@@ -21,7 +21,7 @@ const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n
 export const useCanvasStore = create<CanvasState>((set) => ({
   selectedNode: null,
   hoverNode: null,
-  matchOverlayOn: true,
+  matchOverlayOn: false,
   topK: 8,
   reciprocityHighlight: true,
   conceptCategoryFilter: new Set(),

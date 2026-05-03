@@ -49,12 +49,12 @@ export default function Canvas() {
           g.setNodeAttribute(id, "y", p.y);
         }
       });
-      // Default size and color so sigma renders something visible.
-      // Partner nodes are bright off-white; concept nodes are vivid pink/cyan
-      // so the bipartite structure is legible against the dark canvas.
+      // Concept nodes are the visual scaffolding (pink, large); partner nodes
+      // are cyan dots — distinct hue from both the pink concepts and the
+      // white-ish bipartite edges so they remain legible in the dense middle.
       g.forEachNode((id, attrs) => {
-        g.setNodeAttribute(id, "size", attrs.kind === "concept" ? 7 : 3);
-        g.setNodeAttribute(id, "color", attrs.kind === "concept" ? "#ec4899" : "#f4f4f5");
+        g.setNodeAttribute(id, "size", attrs.kind === "concept" ? 11 : 4);
+        g.setNodeAttribute(id, "color", attrs.kind === "concept" ? "#ec4899" : "#22d3ee");
       });
       setGraph(g);
     })();
@@ -77,8 +77,8 @@ export default function Canvas() {
       if (graph.hasEdge(src, dst)) continue;
       graph.addEdge(src, dst, {
         kind: "match",
-        color: m.reciprocal ? "#fb7185" : "rgba(244,114,182,0.85)",
-        size: m.reciprocal ? 1.6 : 1,
+        color: m.reciprocal ? "rgba(251,113,133,0.7)" : "rgba(244,114,182,0.4)",
+        size: m.reciprocal ? 1.2 : 0.7,
         score: m.score,
         reciprocal: m.reciprocal,
         rationale: m.rationale,
