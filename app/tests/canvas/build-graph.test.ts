@@ -40,6 +40,20 @@ describe("buildGraph", () => {
     expect(g.getNodeAttribute("concept:c1", "category")).toBe("tech");
   });
 
+  it("skips partners with no curated concept tags (orphan filter)", () => {
+    const data2: CanvasData = {
+      ...data,
+      profiles: [
+        ...data.profiles,
+        { slug: "carol", name: "Carol", kind: "person", challengeAreas: [], partnerTypeSeeking: [], rawHtmlPath: "" } as never,
+      ],
+      // carol intentionally absent from profileConcepts
+    };
+    const g = buildGraph(data2);
+    expect(g.hasNode("partner:carol")).toBe(false);
+    expect(g.hasNode("partner:alice")).toBe(true);
+  });
+
   it("skips concept ids in profileConcepts that don't exist in the concept list", () => {
     const data2: CanvasData = {
       ...data,

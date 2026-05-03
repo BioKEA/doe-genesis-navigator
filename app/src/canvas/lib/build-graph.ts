@@ -5,7 +5,11 @@ export function buildGraph(data: CanvasData): Graph<NodeAttrs, EdgeAttrs> {
   const g = new Graph<NodeAttrs, EdgeAttrs>({ type: "undirected", multi: false });
   const conceptIds = new Set(data.concepts.map((c) => c.id));
 
+  // A partner with no curated concepts has no bipartite edges and adds no
+  // graph value; skip them so the canvas isn't littered with orphan dots.
   for (const p of data.profiles) {
+    const tagged = data.profileConcepts[p.slug] ?? [];
+    if (tagged.length === 0) continue;
     g.addNode(`partner:${p.slug}`, {
       kind: "partner",
       label: p.name,
