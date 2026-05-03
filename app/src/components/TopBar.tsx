@@ -1,20 +1,24 @@
 import { NavLink } from "react-router-dom";
 
-const tabClass = ({ isActive }: { isActive: boolean }) =>
-  `px-3 py-1.5 rounded-md text-sm ${
-    isActive ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-200"
-  }`;
-
 export default function TopBar() {
   return (
-    <header className="flex items-center gap-4 border-b border-slate-200 bg-white px-4 py-3">
-      <div className="text-sm font-semibold">Genesis Partners</div>
-      <nav className="flex gap-1">
-        <NavLink to="/" end className={tabClass}>Browse</NavLink>
-        <NavLink to="/composer" className={tabClass}>Composer</NavLink>
-        <NavLink to="/network" className={tabClass}>Matchmaker</NavLink>
-        <NavLink to="/compare" className={tabClass}>Compare</NavLink>
-      </nav>
+    <header className="flex items-center gap-4 border-b border-neutral-800 bg-neutral-950 px-4 py-3">
+      <div className="text-sm font-semibold text-neutral-100">
+        Genesis · Partners
+      </div>
+      <div className="flex-1" />
+      <NavLink
+        to="/composer"
+        className={({ isActive }) =>
+          `px-3 py-1.5 rounded-md text-sm ${
+            isActive
+              ? "bg-neutral-700 text-white"
+              : "text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100"
+          }`
+        }
+      >
+        Composer
+      </NavLink>
     </header>
   );
 }

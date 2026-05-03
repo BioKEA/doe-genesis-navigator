@@ -1,0 +1,58 @@
+{
+  "cookies": [
+    {
+      "name": "_GRECAPTCHA",
+      "value": "09AKhCRwh6UmqXquPKde0bQUohpIS8rZjtu2gIPIKwBhJ7hHZ5tkoTJkptWkEMXVjfrchtmVi0nKdPBGDb9S2MExQ",
+      "domain": "www.google.com",
+      "path": "/recaptcha",
+      "expires": 1793150927.166558,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.306857737.1777598926",
+      "domain": ".genesismissionconsortium.org",
+      "path": "/",
+      "expires": 1812158925.52842,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_82KZTTLF7C",
+      "value": "GS2.1.s1777598925$o1$g0$t1777598930$j55$l0$h0",
+      "domain": ".genesismissionconsortium.org",
+      "path": "/",
+      "expires": 1812158930.316772,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://partnerships.genesismissionconsortium.org",
+      "localStorage": [
+        {
+          "name": "_grecaptcha",
+          "value": "09AKhCRwhCukGqfr3i2D2enZsR3jgqIBA5sS74MfmbTPqhgeNHBgLkFQRhMueujGw2rL_ZlHvv4gn9LRaKXPH9SE8-XTayCGIm7FR6Omx7yxgBu8t7SJ3Evdz3_XomrPgk"
+        }
+      ]
+    },
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::a",
+          "value": "azJzNm9tN3NpejRt"
+        },
+        {
+          "name": "rc::f",
+          "value": "0aACQnAleb-WsRJbkeS50ZZ7yxbc51gKUM-trxp_pih_r-2kwgtWT8m9flqv2r3f-ntA8BEXk"
+        }
+      ]
+    }
+  ]
+}
