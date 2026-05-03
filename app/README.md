@@ -1,6 +1,6 @@
 # Genesis Partners Navigator
 
-Web app for navigating 443 scraped participant profiles from the DOE Genesis
+Web app for navigating 486 scraped participant profiles from the DOE Genesis
 Mission Partnership Exchange. See [the design spec](../docs/superpowers/specs/2026-04-18-genesis-partners-navigator-design.md)
 for requirements and architecture.
 
