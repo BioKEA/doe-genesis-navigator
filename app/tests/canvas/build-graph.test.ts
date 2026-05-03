@@ -40,6 +40,18 @@ describe("buildGraph", () => {
     expect(g.getNodeAttribute("concept:c1", "category")).toBe("tech");
   });
 
+  it("skips concepts with no tagged partners (orphan filter)", () => {
+    const data2: CanvasData = {
+      ...data,
+      concepts: [
+        ...data.concepts,
+        { id: "c-orphan", label: "Orphan", categoryId: "misc", memberPhrases: ["x"] },
+      ],
+    };
+    const g = buildGraph(data2);
+    expect(g.hasNode("concept:c-orphan")).toBe(false);
+  });
+
   it("skips partners with no curated concept tags (orphan filter)", () => {
     const data2: CanvasData = {
       ...data,

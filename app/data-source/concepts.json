@@ -1356,16 +1356,6 @@
       ]
     },
     {
-      "id": "aerospace-engineering-systems",
-      "label": "Aerospace Engineering & Systems",
-      "categoryId": "physics-engineering",
-      "memberPhrases": [
-        "aerospace engineering",
-        "aerospace systems",
-        "aerospace manufacturing"
-      ]
-    },
-    {
       "id": "systems-integration",
       "label": "Systems Integration",
       "categoryId": "computing-infrastructure",

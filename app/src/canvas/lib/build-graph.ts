@@ -16,7 +16,15 @@ export function buildGraph(data: CanvasData): Graph<NodeAttrs, EdgeAttrs> {
       refId: p.slug,
     });
   }
+  // Tally how many kept partners reference each concept; drop concepts that
+  // would have no bipartite edges (they'd float as outlier dots).
+  const conceptUseCount = new Map<string, number>();
+  for (const [slug, ids] of Object.entries(data.profileConcepts)) {
+    if (!g.hasNode(`partner:${slug}`)) continue;
+    for (const id of ids) conceptUseCount.set(id, (conceptUseCount.get(id) ?? 0) + 1);
+  }
   for (const c of data.concepts) {
+    if ((conceptUseCount.get(c.id) ?? 0) === 0) continue;
     g.addNode(`concept:${c.id}`, {
       kind: "concept",
       label: c.label,
