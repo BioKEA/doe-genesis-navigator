@@ -13,14 +13,12 @@ export function buildGraph(data: CanvasData): Graph<NodeAttrs, EdgeAttrs> {
     });
   }
   for (const c of data.concepts) {
-    // Real Concept type uses categoryId; test fixtures may use category via "as never" cast.
-    const category =
-      (c as unknown as { category?: string }).category ?? c.categoryId;
     g.addNode(`concept:${c.id}`, {
       kind: "concept",
       label: c.label,
       refId: c.id,
-      category,
+      category: c.categoryId,
+      size: c.memberPhrases.length,
     });
   }
   for (const [slug, ids] of Object.entries(data.profileConcepts)) {

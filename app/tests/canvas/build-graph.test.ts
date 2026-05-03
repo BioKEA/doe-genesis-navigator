@@ -8,9 +8,9 @@ const data: CanvasData = {
     { slug: "bob", name: "Bob", kind: "org", challengeAreas: [], partnerTypeSeeking: [], rawHtmlPath: "" } as never,
   ],
   concepts: [
-    { id: "c1", label: "AI", category: "tech", memberCount: 2 },
-    { id: "c2", label: "Bio", category: "science", memberCount: 1 },
-  ] as never,
+    { id: "c1", label: "AI", categoryId: "tech", memberPhrases: ["ai", "ml"] },
+    { id: "c2", label: "Bio", categoryId: "science", memberPhrases: ["bio"] },
+  ],
   profileConcepts: { alice: ["c1", "c2"], bob: ["c1"] },
   matches: [],
 };
