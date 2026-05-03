@@ -1,26 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-test("load → filter → open profile → compare", async ({ page }) => {
+test("canvas loads and renders a partner card on deep-link", async ({ page }) => {
   await page.goto("/");
+  // Sigma renders to a <canvas> element inside the GraphCanvas container.
+  await page.waitForSelector("canvas", { timeout: 20_000 });
 
-  // Results load
-  await expect(page.getByText(/\d+\s+results/)).toBeVisible();
+  // Deep-link to a known partner; right pane should anchor on them.
+  await page.goto("/#/profile/biokea");
+  await expect(page.getByText(/biokea/i).first()).toBeVisible({ timeout: 10_000 });
 
-  // Pick the first visible challenge filter and apply it
-  const firstFilter = page.locator("fieldset").first().locator("input[type=checkbox]").first();
-  await firstFilter.click();
-
-  // Open the first card
-  const firstCard = page.locator("a[href*='#/profile/']").first();
-  const name = (await firstCard.locator(".font-medium").first().textContent())?.trim();
-  await firstCard.click();
-
-  await expect(page.locator("h1")).toContainText(name ?? "");
-
-  // Pin to compare from the profile page
-  await page.getByLabel("Add to compare").click();
-
-  // Navigate to compare
-  await page.getByRole("link", { name: "Compare" }).click();
-  await expect(page.getByText("1 / 5 pinned")).toBeVisible();
+  // RightPane shows the top-matches section with at least one numeric score.
+  const scoreInAside = page.locator("aside").filter({ hasText: /\d\.\d{2}/ }).first();
+  await expect(scoreInAside).toBeVisible({ timeout: 10_000 });
 });

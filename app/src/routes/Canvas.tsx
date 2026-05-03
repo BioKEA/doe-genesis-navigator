@@ -45,17 +45,14 @@ export default function Canvas() {
       g.forEachNode((id) => {
         const p = positions!.get(id);
         if (p) {
-          g.setNodeAttribute(id, "x" as never, p.x);
-          g.setNodeAttribute(id, "y" as never, p.y);
+          g.setNodeAttribute(id, "x", p.x);
+          g.setNodeAttribute(id, "y", p.y);
         }
       });
       // Default size and color so sigma renders something visible.
       g.forEachNode((id, attrs) => {
-        g.setNodeAttribute(id, "size" as never, attrs.kind === "concept" ? 6 : 3);
-        g.setNodeAttribute(
-          id, "color" as never,
-          attrs.kind === "concept" ? "#f472b6" : "#a3a3a3",
-        );
+        g.setNodeAttribute(id, "size", attrs.kind === "concept" ? 6 : 3);
+        g.setNodeAttribute(id, "color", attrs.kind === "concept" ? "#f472b6" : "#a3a3a3");
       });
       setGraph(g);
     })();

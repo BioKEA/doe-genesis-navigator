@@ -1,16 +1,14 @@
-import { forceLink, forceManyBody, forceSimulation, forceCenter } from "d3-force";
+import { forceLink, forceManyBody, forceSimulation, forceCenter, type SimulationNodeDatum, type SimulationLinkDatum } from "d3-force";
 import type Graph from "graphology";
 import type { EdgeAttrs, NodeAttrs } from "./types";
 import type { Positions } from "./layout-cache";
 
-interface SimNode {
+interface SimNode extends SimulationNodeDatum {
   id: string;
   kind: "partner" | "concept";
-  x?: number;
-  y?: number;
 }
 
-interface SimLink { source: string; target: string }
+type SimLink = SimulationLinkDatum<SimNode>;
 
 export function computeLayout(
   graph: Graph<NodeAttrs, EdgeAttrs>,
@@ -20,8 +18,8 @@ export function computeLayout(
   const nodes: SimNode[] = graph.mapNodes((id, attrs) => ({ id, kind: attrs.kind }));
   const links: SimLink[] = graph.mapEdges((_id, _attrs, source, target) => ({ source, target }));
 
-  const sim = forceSimulation(nodes as never)
-    .force("link", forceLink(links).id((d: SimNode) => d.id).distance(40).strength(0.6))
+  const sim = forceSimulation(nodes)
+    .force("link", forceLink<SimNode, SimLink>(links).id((d) => d.id).distance(40).strength(0.6))
     // Concept nodes get stronger repulsion than partners (spec § 8).
     .force(
       "charge",
