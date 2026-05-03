@@ -20,6 +20,8 @@ export function GraphCanvas({ graph }: Props) {
       renderEdgeLabels: false,
       defaultEdgeColor: "rgba(220,220,220,0.55)",
       defaultNodeColor: "#d4d4d8",
+      labelColor: { color: "#f4f4f5" },
+      labelWeight: "500",
     });
     sigmaRef.current = sigma;
     const setSelected = useCanvasStore.getState().setSelectedNode;
