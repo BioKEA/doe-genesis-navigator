@@ -12,7 +12,7 @@ export function LeftPane({ categories }: Props) {
     useCanvasStore.getState();
 
   return (
-    <aside className="flex w-[220px] flex-col gap-6 border-r border-neutral-800 bg-neutral-950 p-4 text-sm text-neutral-200">
+    <aside className="flex h-full w-[220px] flex-col gap-6 overflow-y-auto border-r border-neutral-800 bg-neutral-950 p-4 text-sm text-neutral-200">
       <section>
         <h3 className="mb-2 text-xs uppercase tracking-wide text-neutral-400">Matches</h3>
         <label className="flex items-center gap-2">
@@ -70,6 +70,20 @@ export function LeftPane({ categories }: Props) {
           })}
         </div>
       </section>
+
+      <div className="mt-auto border-t border-neutral-800 pt-3 text-[11px] text-neutral-500">
+        Built by{" "}
+        <a
+          href="https://biokea.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-300 hover:text-pink-300"
+        >
+          BioKEA
+        </a>
+        {" · "}
+        Curated 2026-05-02
+      </div>
     </aside>
   );
 }
