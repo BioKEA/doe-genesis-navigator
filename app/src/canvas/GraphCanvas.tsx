@@ -1,11 +1,49 @@
 import { useEffect, useRef } from "react";
 import Sigma from "sigma";
 import type Graph from "graphology";
+import type { Settings } from "sigma/settings";
+import type { NodeDisplayData, PartialButFor } from "sigma/types";
 import { useCanvasStore } from "./lib/store";
 import type { EdgeAttrs, NodeAttrs } from "./lib/types";
 
 interface Props {
   graph: Graph<NodeAttrs, EdgeAttrs>;
+}
+
+// Sigma's default node-hover renderer hardcodes #FFF for the label background,
+// which collides with our light label text on the dark canvas. Mirror its
+// shape but use a dark slate fill.
+function drawDarkNodeHover(
+  context: CanvasRenderingContext2D,
+  data: PartialButFor<NodeDisplayData, "x" | "y" | "size" | "label" | "color">,
+  settings: Settings,
+): void {
+  const size = settings.labelSize;
+  const font = settings.labelFont;
+  const weight = settings.labelWeight;
+  context.font = `${weight} ${size}px ${font}`;
+  context.fillStyle = "rgba(23, 23, 23, 0.95)";
+  const PADDING = 3;
+  if (typeof data.label === "string") {
+    const textWidth = context.measureText(data.label).width;
+    const boxWidth = Math.round(textWidth + 8);
+    const boxHeight = Math.round(size + 2 * PADDING);
+    const radius = Math.max(data.size, size / 2) + PADDING;
+    const angleRadian = Math.asin(boxHeight / 2 / radius);
+    const xDeltaCoord = Math.sqrt(Math.abs(radius ** 2 - (boxHeight / 2) ** 2));
+    context.beginPath();
+    context.moveTo(data.x + xDeltaCoord, data.y + boxHeight / 2);
+    context.lineTo(data.x + radius + boxWidth, data.y + boxHeight / 2);
+    context.lineTo(data.x + radius + boxWidth, data.y - boxHeight / 2);
+    context.lineTo(data.x + xDeltaCoord, data.y - boxHeight / 2);
+    context.arc(data.x, data.y, radius, angleRadian, -angleRadian);
+    context.closePath();
+    context.fill();
+  }
+  if (typeof data.label === "string") {
+    context.fillStyle = "#f4f4f5";
+    context.fillText(data.label, data.x + (data.size + PADDING) + 3, data.y + size / 3);
+  }
 }
 
 export function GraphCanvas({ graph }: Props) {
@@ -22,6 +60,7 @@ export function GraphCanvas({ graph }: Props) {
       defaultNodeColor: "#d4d4d8",
       labelColor: { color: "#f4f4f5" },
       labelWeight: "500",
+      defaultDrawNodeHover: drawDarkNodeHover,
     });
     sigmaRef.current = sigma;
     const setSelected = useCanvasStore.getState().setSelectedNode;
