@@ -17,6 +17,9 @@ export interface NodeAttrs {
 
 export interface EdgeAttrs {
   kind: EdgeKind;
+  // Sigma reads these directly:
+  color?: string;
+  size?: number;
   // Match-only fields:
   score?: number;
   reciprocal?: boolean;

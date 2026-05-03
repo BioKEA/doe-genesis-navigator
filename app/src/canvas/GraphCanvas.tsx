@@ -18,8 +18,8 @@ export function GraphCanvas({ graph }: Props) {
     // our NodeAttrs/EdgeAttrs are structurally compatible at the JS level.
     const sigma = new Sigma(graph as Graph, containerRef.current, {
       renderEdgeLabels: false,
-      defaultEdgeColor: "rgba(150,150,150,0.25)",
-      defaultNodeColor: "#888",
+      defaultEdgeColor: "rgba(220,220,220,0.55)",
+      defaultNodeColor: "#d4d4d8",
     });
     sigmaRef.current = sigma;
     const setSelected = useCanvasStore.getState().setSelectedNode;
@@ -34,5 +34,5 @@ export function GraphCanvas({ graph }: Props) {
     };
   }, [graph]);
 
-  return <div ref={containerRef} className="h-full w-full bg-neutral-950" />;
+  return <div ref={containerRef} className="h-full w-full bg-neutral-800" />;
 }

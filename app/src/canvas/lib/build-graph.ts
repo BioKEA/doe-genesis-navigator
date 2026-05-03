@@ -25,7 +25,11 @@ export function buildGraph(data: CanvasData): Graph<NodeAttrs, EdgeAttrs> {
     if (!g.hasNode(`partner:${slug}`)) continue;
     for (const id of ids) {
       if (!conceptIds.has(id)) continue;
-      g.addEdge(`partner:${slug}`, `concept:${id}`, { kind: "bipartite" });
+      g.addEdge(`partner:${slug}`, `concept:${id}`, {
+        kind: "bipartite",
+        color: "rgba(229,231,235,0.45)",
+        size: 0.6,
+      });
     }
   }
   return g;
