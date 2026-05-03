@@ -108,6 +108,7 @@ function main() {
     mergedProfiles = attachConceptIds(profiles, map);
     const concepts = JSON.parse(readFileSync(CONCEPTS_PATH, "utf8")) as ConceptsArtifact;
     writeFileSync(join(OUT_DIR, "concepts.json"), JSON.stringify(concepts));
+    writeFileSync(join(OUT_DIR, "profile-concepts.json"), JSON.stringify(map));
     console.log(`merged ${concepts.concepts.length} concepts, tagged ${Object.keys(map).length} profiles`);
   } else {
     console.log("no concepts.json found — skipping concept merge (run npm run concepts first)");
