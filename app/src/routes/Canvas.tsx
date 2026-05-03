@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LeftPane } from "../canvas/LeftPane";
 import { GraphCanvas } from "../canvas/GraphCanvas";
 import { RightPane } from "../canvas/RightPane";
@@ -15,10 +15,13 @@ import type Graph from "graphology";
 
 export default function Canvas() {
   const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
   const [data, setData] = useState<CanvasData | null>(null);
   const [graph, setGraph] = useState<Graph<NodeAttrs, EdgeAttrs> | null>(null);
   const matchOverlayOn = useCanvasStore((s) => s.matchOverlayOn);
   const topK = useCanvasStore((s) => s.topK);
+  const reciprocityHighlight = useCanvasStore((s) => s.reciprocityHighlight);
+  const selectedNode = useCanvasStore((s) => s.selectedNode);
 
   useEffect(() => {
     void loadCanvasData().then(setData);
@@ -75,17 +78,27 @@ export default function Canvas() {
       const dst = `partner:${m.to}`;
       if (!graph.hasNode(src) || !graph.hasNode(dst)) continue;
       if (graph.hasEdge(src, dst)) continue;
+      const highlighted = reciprocityHighlight && m.reciprocal;
       graph.addEdge(src, dst, {
         kind: "match",
-        color: m.reciprocal ? "rgba(251,113,133,0.7)" : "rgba(244,114,182,0.4)",
-        size: m.reciprocal ? 1.2 : 0.7,
+        color: highlighted ? "rgba(251,113,133,0.85)" : "rgba(244,114,182,0.4)",
+        size: highlighted ? 1.4 : 0.7,
         score: m.score,
         reciprocal: m.reciprocal,
         rationale: m.rationale,
         sharedConcepts: m.sharedConcepts,
       });
     }
-  }, [graph, data, matchOverlayOn, topK]);
+  }, [graph, data, matchOverlayOn, topK, reciprocityHighlight]);
+
+  // Push the URL when the user picks a partner via canvas click or a name in
+  // the right pane. Don't push for concept selection (no concept route) or
+  // when the URL already matches (avoids initial-mount loop).
+  useEffect(() => {
+    if (!selectedNode || !selectedNode.startsWith("partner:")) return;
+    const newSlug = selectedNode.slice("partner:".length);
+    if (newSlug !== slug) navigate(`/profile/${newSlug}`);
+  }, [selectedNode, slug, navigate]);
 
   // Pre-select partner from the URL.
   useEffect(() => {

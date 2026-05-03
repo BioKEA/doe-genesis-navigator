@@ -61,6 +61,16 @@ export function GraphCanvas({ graph }: Props) {
       labelColor: { color: "#f4f4f5" },
       labelWeight: "500",
       defaultDrawNodeHover: drawDarkNodeHover,
+      // Hide concept nodes whose category isn't in the active filter set.
+      // (Bipartite edges to a hidden node are auto-hidden by sigma.)
+      nodeReducer: (_id, attrs) => {
+        const filter = useCanvasStore.getState().conceptCategoryFilter;
+        if (filter.size === 0) return attrs;
+        if (attrs.kind === "concept" && !filter.has(attrs.category as string)) {
+          return { ...attrs, hidden: true };
+        }
+        return attrs;
+      },
     });
     sigmaRef.current = sigma;
     const setSelected = useCanvasStore.getState().setSelectedNode;
@@ -69,7 +79,38 @@ export function GraphCanvas({ graph }: Props) {
     sigma.on("enterNode", (e: { node: string }) => setHover(e.node));
     sigma.on("leaveNode", () => setHover(null));
     sigma.on("clickStage", () => setSelected(null));
+
+    // Re-render when the category filter changes.
+    let prevFilter = useCanvasStore.getState().conceptCategoryFilter;
+    const unsubFilter = useCanvasStore.subscribe((state) => {
+      if (state.conceptCategoryFilter !== prevFilter) {
+        prevFilter = state.conceptCategoryFilter;
+        sigma.refresh();
+      }
+    });
+
+    // Animate the camera to the selected node — both when selection changes
+    // and once on mount if a selection was already set (deep-link case).
+    const focusOnSelection = (id: string | null) => {
+      if (!id || !graph.hasNode(id)) return;
+      const display = sigma.getNodeDisplayData(id);
+      if (!display) return;
+      sigma.getCamera().animate(
+        { x: display.x, y: display.y, ratio: 0.35 },
+        { duration: 600 },
+      );
+    };
+    focusOnSelection(useCanvasStore.getState().selectedNode);
+    let prevSelected = useCanvasStore.getState().selectedNode;
+    const unsubSelected = useCanvasStore.subscribe((state) => {
+      if (state.selectedNode === prevSelected) return;
+      prevSelected = state.selectedNode;
+      focusOnSelection(state.selectedNode);
+    });
+
     return () => {
+      unsubFilter();
+      unsubSelected();
       sigma.kill();
       sigmaRef.current = null;
     };

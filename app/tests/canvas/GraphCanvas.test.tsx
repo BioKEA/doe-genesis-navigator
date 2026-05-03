@@ -13,6 +13,9 @@ vi.mock("sigma", () => ({
     on(evt: string, fn: (e: unknown) => void) { this.handlers[evt] = fn; }
     kill() {}
     refresh() {}
+    setSetting() {}
+    getNodeDisplayData() { return { x: 0, y: 0 }; }
+    getCamera() { return { animate: () => {} }; }
     fire(evt: string, payload: unknown) { this.handlers[evt]?.(payload); }
   },
 }));
