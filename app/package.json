@@ -36,10 +36,14 @@
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
     "fuse.js": "^7.3.0",
+    "graphology": "^0.26.0",
+    "graphology-types": "^0.24.8",
     "lucide-react": "^1.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.14.1"
+    "react-router-dom": "^7.14.1",
+    "sigma": "^3.0.3",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
