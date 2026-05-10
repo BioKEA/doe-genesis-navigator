@@ -71,6 +71,21 @@ export function GraphCanvas({ graph }: Props) {
         }
         return attrs;
       },
+      // When the category filter is on, hide partner-partner match edges
+      // unless at least one endpoint is tagged with a concept in an active
+      // category (filter feels fully-applied instead of half-applied).
+      edgeReducer: (id, attrs) => {
+        if (attrs.kind !== "match") return attrs;
+        const filter = useCanvasStore.getState().conceptCategoryFilter;
+        if (filter.size === 0) return attrs;
+        const [src, dst] = graph.extremities(id);
+        const srcCats = (graph.getNodeAttribute(src, "categories") as string[] | undefined) ?? [];
+        const dstCats = (graph.getNodeAttribute(dst, "categories") as string[] | undefined) ?? [];
+        const overlap =
+          srcCats.some((c) => filter.has(c)) || dstCats.some((c) => filter.has(c));
+        if (!overlap) return { ...attrs, hidden: true };
+        return attrs;
+      },
     });
     sigmaRef.current = sigma;
     const setSelected = useCanvasStore.getState().setSelectedNode;

@@ -9,6 +9,10 @@ export interface NodeAttrs {
   size?: number;
   refId: string;
   category?: string;
+  // For partner nodes only: distinct concept categories the partner is tagged
+  // with (precomputed so the category filter can dim match edges between
+  // partners that don't touch any active category).
+  categories?: string[];
   // Sigma renders directly from these. Set by the Canvas route after layout.
   x?: number;
   y?: number;

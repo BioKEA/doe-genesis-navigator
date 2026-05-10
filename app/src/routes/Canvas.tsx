@@ -60,6 +60,17 @@ export default function Canvas() {
         g.setNodeAttribute(id, "size", attrs.kind === "concept" ? 11 : 4);
         g.setNodeAttribute(id, "color", attrs.kind === "concept" ? "#ec4899" : "#22d3ee");
       });
+      // Precompute each partner's distinct concept categories so the
+      // category-filter reducer in GraphCanvas can quickly dim irrelevant
+      // partner-partner match edges without walking neighbors at render time.
+      g.forEachNode((id, attrs) => {
+        if (attrs.kind !== "partner") return;
+        const cats = new Set<string>();
+        g.forEachNeighbor(id, (n, nattrs) => {
+          if (nattrs.kind === "concept" && nattrs.category) cats.add(nattrs.category);
+        });
+        g.setNodeAttribute(id, "categories", Array.from(cats));
+      });
       setGraph(g);
     })();
     return () => { cancelled = true; };
