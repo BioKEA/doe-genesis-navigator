@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { LeftPane } from "../canvas/LeftPane";
 import { GraphCanvas } from "../canvas/GraphCanvas";
 import { RightPane } from "../canvas/RightPane";
+import { OnboardingOverlay } from "../canvas/OnboardingOverlay";
 import { loadCanvasData } from "../canvas/lib/load-canvas-data";
 import { buildGraph } from "../canvas/lib/build-graph";
 import { selectTopKMatchEdges } from "../canvas/lib/match-edges";
@@ -125,6 +126,7 @@ export default function Canvas() {
           : <div className="flex h-full items-center justify-center text-neutral-500">
               Loading canvas…
             </div>}
+        {graph && <OnboardingOverlay />}
       </div>
       {data && <RightPane data={data} />}
     </div>
