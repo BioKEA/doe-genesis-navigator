@@ -66,7 +66,7 @@ export default function Canvas() {
       g.forEachNode((id, attrs) => {
         if (attrs.kind !== "partner") return;
         const cats = new Set<string>();
-        g.forEachNeighbor(id, (n, nattrs) => {
+        g.forEachNeighbor(id, (_n, nattrs) => {
           if (nattrs.kind === "concept" && nattrs.category) cats.add(nattrs.category);
         });
         g.setNodeAttribute(id, "categories", Array.from(cats));
