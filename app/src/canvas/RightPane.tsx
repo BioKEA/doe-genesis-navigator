@@ -1,12 +1,16 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCanvasStore } from "./lib/store";
 import type { CanvasData } from "./lib/types";
 
 interface Props { data: CanvasData }
 
+const COLLAPSED_MATCHES = 3;
+
 export function RightPane({ data }: Props) {
   const selectedNode = useCanvasStore((s) => s.selectedNode);
   const setSelectedNode = useCanvasStore.getState().setSelectedNode;
+  const [showAllMatches, setShowAllMatches] = useState(false);
+  useEffect(() => setShowAllMatches(false), [selectedNode]);
 
   const conceptById = useMemo(
     () => new Map(data.concepts.map((c) => [c.id, c])),
@@ -72,30 +76,50 @@ export function RightPane({ data }: Props) {
           </ul>
         </section>
         <section>
-          <h3 className="mb-1 text-xs uppercase tracking-wide text-neutral-400">
-            Top matches ({matches.length})
-          </h3>
+          <div className="mb-1 flex items-baseline justify-between">
+            <h3 className="text-xs uppercase tracking-wide text-neutral-400">
+              Top matches ({matches.length})
+            </h3>
+          </div>
+          <p className="mb-2 text-[11px] text-neutral-500">
+            Score 0.50–1.00. Higher is better. Reciprocal matches are marked
+            with <span className="text-pink-400">⇄</span> — both partners
+            satisfy each other's seek.
+          </p>
           <ul className="flex flex-col gap-2">
-            {matches.map((m) => {
-              const target = profileBySlug.get(m.to);
-              return (
-                <li key={`${m.from}->${m.to}`} className="rounded border border-neutral-800 p-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedNode(`partner:${m.to}`)}
-                    className="flex items-center gap-2 text-left font-medium text-pink-300 hover:underline"
-                  >
-                    {target?.name ?? m.to}
-                    {m.reciprocal && <span title="reciprocal" className="text-pink-500">⇄</span>}
-                    <span className="ml-auto text-xs text-neutral-400">
-                      {m.score.toFixed(2)}
-                    </span>
-                  </button>
-                  <p className="mt-1 text-xs text-neutral-300">{m.rationale}</p>
-                </li>
-              );
-            })}
+            {matches
+              .slice(0, showAllMatches ? matches.length : COLLAPSED_MATCHES)
+              .map((m) => {
+                const target = profileBySlug.get(m.to);
+                return (
+                  <li key={`${m.from}->${m.to}`} className="rounded border border-neutral-800 p-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedNode(`partner:${m.to}`)}
+                      className="flex items-center gap-2 text-left font-medium text-pink-300 hover:underline"
+                    >
+                      {target?.name ?? m.to}
+                      {m.reciprocal && <span title="reciprocal" className="text-pink-500">⇄</span>}
+                      <span className="ml-auto text-xs text-neutral-400">
+                        {m.score.toFixed(2)}
+                      </span>
+                    </button>
+                    <p className="mt-1 text-xs text-neutral-300">{m.rationale}</p>
+                  </li>
+                );
+              })}
           </ul>
+          {matches.length > COLLAPSED_MATCHES && (
+            <button
+              type="button"
+              onClick={() => setShowAllMatches((v) => !v)}
+              className="mt-2 w-full rounded border border-neutral-800 py-1 text-[11px] text-neutral-400 hover:border-neutral-700 hover:text-neutral-200"
+            >
+              {showAllMatches
+                ? `Show top ${COLLAPSED_MATCHES} only`
+                : `Show ${matches.length - COLLAPSED_MATCHES} more`}
+            </button>
+          )}
         </section>
       </aside>
     );
