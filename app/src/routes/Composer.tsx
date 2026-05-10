@@ -19,7 +19,7 @@ import { generateNarrative, generateOutreach } from "../lib/narrative";
 import { PHASES, DEADLINES, SECTOR_LABELS, sectorFor, type PhaseId, SECTORS } from "../lib/rfa";
 import { affiliationColor } from "../lib/affiliations";
 import CoverageMatrixView from "../components/CoverageMatrix";
-import type { Profile } from "../types";
+import type { Match, Profile } from "../types";
 
 // ---- URL state helpers ----
 
@@ -34,7 +34,14 @@ function serializeList(items: string[]): string {
 
 export default function Composer() {
   const [bundle, setBundle] = useState<Awaited<ReturnType<typeof loadData>> | null>(null);
+  const [matches, setMatches] = useState<Match[]>([]);
   useEffect(() => { loadData().then(setBundle); }, []);
+  useEffect(() => {
+    fetch("/data/matches.json")
+      .then((r) => (r.ok ? r.json() : []) as Promise<Match[]>)
+      .then(setMatches)
+      .catch(() => setMatches([]));
+  }, []);
   const [params, setParams] = useSearchParams();
 
   // URL-backed controls (so a configured composer is shareable)
@@ -223,6 +230,7 @@ export default function Composer() {
                 onOpenNarrative={() => setNarrativeOpen(true)}
                 onReset={() => setLiveTeam(null)}
                 edited={liveTeam !== null}
+                matches={matches}
               />
             )}
           </main>
@@ -524,6 +532,7 @@ function VariantRail({
 function TeamWorkspace({
   team, contributions, coverage, marginalAddition, lockedSlugs, leadSlug,
   onSwapSlot, onRemoveSlot, onToggleLock, onAddMember, onAddTopMarginal, onOpenNarrative, onReset, edited,
+  matches,
 }: {
   team: Team;
   contributions: MemberContribution[];
@@ -539,9 +548,22 @@ function TeamWorkspace({
   onOpenNarrative: () => void;
   onReset: () => void;
   edited: boolean;
+  matches: Match[];
 }) {
   const sectorsPresent = new Set(team.members.map((p) => sectorFor(p.affiliation)));
   const missingSectors = (["academic", "industry", "natlab"] as const).filter(s => !sectorsPresent.has(s));
+
+  // Surface the LLM-scored offer→seek match rationales between this team's
+  // members so the user can see WHY these partners complement each other.
+  const teamSlugs = new Set(team.members.map((p) => p.slug));
+  const memberByName = new Map(team.members.map((p) => [p.slug, p.name]));
+  const internalMatches = matches
+    .filter((m) => teamSlugs.has(m.from) && teamSlugs.has(m.to))
+    .sort((a, b) => {
+      if (a.reciprocal !== b.reciprocal) return a.reciprocal ? -1 : 1;
+      return b.score - a.score;
+    })
+    .slice(0, 8);
 
   return (
     <div className="space-y-4 p-4">
@@ -692,6 +714,44 @@ function TeamWorkspace({
               </button>
             </div>
           )}
+        </section>
+      )}
+
+      {internalMatches.length > 0 && (
+        <section className="rounded-md border border-neutral-800 bg-neutral-900 p-4">
+          <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-neutral-300">
+            Why these partners fit together
+          </h3>
+          <p className="mb-3 text-[11px] text-neutral-500">
+            LLM-scored offer→seek matches between the {team.members.length}{" "}
+            partners on this team. Reciprocal pairs (⇄) satisfy each other in
+            both directions.
+          </p>
+          <ul className="space-y-2">
+            {internalMatches.map((m) => (
+              <li
+                key={`${m.from}->${m.to}`}
+                className="rounded border border-neutral-800 bg-neutral-950 p-3"
+              >
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="font-medium text-cyan-300">
+                    {memberByName.get(m.from)}
+                  </span>
+                  <span className="text-neutral-500">→</span>
+                  <span className="font-medium text-cyan-300">
+                    {memberByName.get(m.to)}
+                  </span>
+                  {m.reciprocal && (
+                    <span title="reciprocal" className="text-pink-400">⇄</span>
+                  )}
+                  <span className="ml-auto text-xs text-neutral-400">
+                    {m.score.toFixed(2)}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-neutral-300">{m.rationale}</p>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
