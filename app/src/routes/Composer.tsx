@@ -131,7 +131,7 @@ export default function Composer() {
   // When user picks a different variant or edits inputs, reset the live team
   useEffect(() => { setLiveTeam(null); setSwapSlot(null); }, [selectedVariant, selectedChallenges.join(","), selectedOfferings.join(","), phaseId, leadSlug, lockedSlugs.join(",")]);
 
-  if (!bundle) return <div className="p-8 text-slate-500">Loading…</div>;
+  if (!bundle) return <div className="p-8 text-neutral-400">Loading…</div>;
 
   const toggleChallenge = (c: string) => {
     setList("c", selectedChallenges.includes(c)
@@ -195,10 +195,10 @@ export default function Composer() {
       {selectedChallenges.length === 0 ? (
         <EmptyState challengeOptions={challengeOptions} onToggleChallenge={toggleChallenge} />
       ) : !variants ? (
-        <div className="p-8 text-slate-500">Computing consortium variants…</div>
+        <div className="p-8 text-neutral-400">Computing consortium variants…</div>
       ) : (
         <div className="flex flex-1 overflow-hidden">
-          <aside className="w-64 shrink-0 overflow-y-auto border-r border-slate-200 bg-white">
+          <aside className="w-64 shrink-0 overflow-y-auto border-r border-neutral-800 bg-neutral-900">
             <VariantRail
               variants={variants}
               selected={selectedVariant}
@@ -289,11 +289,11 @@ function SetupBar({
 }) {
   const lead = profiles.find((p) => p.slug === leadSlug);
   return (
-    <div className="border-b border-slate-200 bg-white px-4 py-3">
+    <div className="border-b border-neutral-800 bg-neutral-900 px-4 py-3">
       <div className="mb-2 flex items-center gap-4">
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Consortium Composer</h2>
-          <div className="text-xs text-slate-500">
+          <h2 className="text-lg font-semibold text-neutral-100">Consortium Composer</h2>
+          <div className="text-xs text-neutral-400">
             DOE Genesis Mission (DE-FOA-0003612) · Phase I + LOI due <b>{DEADLINES.phase1}</b> · Phase II full <b>{DEADLINES.phase2Full}</b>
           </div>
         </div>
@@ -301,7 +301,7 @@ function SetupBar({
           <select
             value={phaseId}
             onChange={(e) => onPhase(e.target.value as PhaseId)}
-            className="rounded border border-slate-300 bg-white px-2 py-1 text-sm"
+            className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-sm"
           >
             {PHASES.map((p) => (
               <option key={p.id} value={p.id}>{p.label}</option>
@@ -309,10 +309,10 @@ function SetupBar({
           </select>
           <LeadPicker leadSlug={leadSlug} profiles={profiles} onPick={onLead} />
           {lead && (
-            <span className="rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+            <span className="rounded bg-neutral-800 px-2 py-0.5 text-xs text-neutral-200">
               lead: {lead.name}
               <button
-                className="ml-1 text-slate-400 hover:text-slate-700"
+                className="ml-1 text-neutral-500 hover:text-neutral-200"
                 onClick={() => onLead("")}
                 aria-label="Clear lead"
               >×</button>
@@ -331,10 +331,10 @@ function SetupBar({
           />
           <div className="mt-1 flex flex-wrap gap-1">
             {selectedChallenges.map((c) => (
-              <span key={c} className="rounded-full bg-indigo-100 px-2 py-0.5 text-[11px] text-indigo-800">
+              <span key={c} className="rounded-full bg-cyan-900/40 px-2 py-0.5 text-[11px] text-cyan-200">
                 {c}
                 <button
-                  className="ml-1 text-indigo-500 hover:text-indigo-800"
+                  className="ml-1 text-cyan-400 hover:text-cyan-200"
                   onClick={() => onToggleChallenge(c)}
                   aria-label="Remove challenge"
                 >×</button>
@@ -351,10 +351,10 @@ function SetupBar({
           />
           <div className="mt-1 flex flex-wrap gap-1">
             {selectedOfferings.map((o) => (
-              <span key={o} className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] text-emerald-800">
+              <span key={o} className="rounded-full bg-emerald-900/40 px-2 py-0.5 text-[11px] text-emerald-200">
                 {o}
                 <button
-                  className="ml-1 text-emerald-500 hover:text-emerald-800"
+                  className="ml-1 text-emerald-400 hover:text-emerald-200"
                   onClick={() => onToggleOffering(o)}
                   aria-label="Remove offering"
                 >×</button>
@@ -383,26 +383,26 @@ function Dropdown({
         type="button"
         onClick={() => setOpen((x) => !x)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
-        className="flex w-full items-center justify-between gap-2 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm hover:bg-slate-50"
+        className="flex w-full items-center justify-between gap-2 rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-sm hover:bg-neutral-900"
       >
         <span>{label}</span>
         <ChevronDown size={14} />
       </button>
       {open && (
-        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-72 overflow-y-auto rounded-md border border-slate-200 bg-white shadow-lg">
+        <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-72 overflow-y-auto rounded-md border border-neutral-800 bg-neutral-900 shadow-lg">
           {options.map(([value, count]) => (
             <button
               key={value}
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => onToggle(value)}
-              className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm hover:bg-slate-50 ${
-                selSet.has(value) ? "bg-indigo-50" : ""
+              className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm hover:bg-neutral-900 ${
+                selSet.has(value) ? "bg-cyan-900/40" : ""
               }`}
             >
               <input type="checkbox" checked={selSet.has(value)} readOnly />
               <span className="flex-1 truncate">{value}</span>
-              <span className="text-[11px] text-slate-400">{count}</span>
+              <span className="text-[11px] text-neutral-500">{count}</span>
             </button>
           ))}
         </div>
@@ -438,16 +438,16 @@ function LeadPicker({
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         placeholder="Pick team lead (optional)…"
-        className="w-48 rounded border border-slate-300 bg-white px-2 py-1 text-sm"
+        className="w-48 rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-sm"
       />
       {open && suggestions.length > 0 && (
-        <ul className="absolute right-0 top-full z-20 mt-1 w-80 max-h-64 overflow-y-auto rounded-md border border-slate-200 bg-white shadow-lg">
+        <ul className="absolute right-0 top-full z-20 mt-1 w-80 max-h-64 overflow-y-auto rounded-md border border-neutral-800 bg-neutral-900 shadow-lg">
           {suggestions.map((p) => (
             <li key={p.slug}>
               <button
                 type="button"
                 onMouseDown={(e) => { e.preventDefault(); onPick(p.slug); setQ(""); setOpen(false); }}
-                className="flex w-full items-start gap-2 px-3 py-1.5 text-left text-xs hover:bg-slate-50"
+                className="flex w-full items-start gap-2 px-3 py-1.5 text-left text-xs hover:bg-neutral-900"
               >
                 <span
                   className="mt-0.5 inline-block h-2 w-2 shrink-0 rounded-full"
@@ -455,7 +455,7 @@ function LeadPicker({
                 />
                 <div>
                   <div className="font-medium">{p.name}</div>
-                  <div className="text-[10px] text-slate-500">{p.affiliation}</div>
+                  <div className="text-[10px] text-neutral-400">{p.affiliation}</div>
                 </div>
               </button>
             </li>
@@ -477,7 +477,7 @@ function VariantRail({
 }) {
   return (
     <div className="p-3">
-      <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+      <div className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-400">
         Proposed teams
       </div>
       <ul className="space-y-2">
@@ -491,23 +491,23 @@ function VariantRail({
                 onClick={() => onSelect(t.variantId!)}
                 className={`w-full rounded-md border p-3 text-left ${
                   active ? "border-slate-900 bg-slate-900 text-white"
-                         : "border-slate-200 bg-white hover:border-slate-400"
+                         : "border-neutral-800 bg-neutral-900 hover:border-neutral-600"
                 }`}
               >
                 <div className="text-sm font-semibold">{meta.label}</div>
-                <div className={`text-[11px] ${active ? "text-slate-300" : "text-slate-500"}`}>
+                <div className={`text-[11px] ${active ? "text-neutral-500" : "text-neutral-400"}`}>
                   {meta.tagline}
                 </div>
                 <div className="mt-2 flex items-center gap-2">
-                  <div className={`h-1.5 flex-1 overflow-hidden rounded-full ${active ? "bg-slate-700" : "bg-slate-100"}`}>
+                  <div className={`h-1.5 flex-1 overflow-hidden rounded-full ${active ? "bg-slate-700" : "bg-neutral-800"}`}>
                     <div
-                      className={`h-full rounded-full ${active ? "bg-white" : "bg-slate-900"}`}
+                      className={`h-full rounded-full ${active ? "bg-neutral-900" : "bg-slate-900"}`}
                       style={{ width: `${Math.min(100, (t.score.total / 10) * 100)}%` }}
                     />
                   </div>
                   <span className="text-[11px]">{t.score.total.toFixed(1)}</span>
                 </div>
-                <div className={`mt-1 text-[10px] ${active ? "text-slate-300" : "text-slate-400"}`}>
+                <div className={`mt-1 text-[10px] ${active ? "text-neutral-500" : "text-neutral-500"}`}>
                   {t.members.length} partners
                 </div>
               </button>
@@ -545,10 +545,10 @@ function TeamWorkspace({
 
   return (
     <div className="space-y-4 p-4">
-      <section className="rounded-md border border-slate-200 bg-white p-4">
+      <section className="rounded-md border border-neutral-800 bg-neutral-900 p-4">
         <div className="mb-3 flex items-center gap-3">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-600">Team</h3>
-          <span className="text-xs text-slate-500">{team.members.length} partners</span>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-300">Team</h3>
+          <span className="text-xs text-neutral-400">{team.members.length} partners</span>
           <ScoreChip label="Challenge cov" value={team.score.challengeCoverage} />
           <ScoreChip label="Offering cov" value={team.score.offeringCoverage} />
           <ScoreChip label="Sector mix" value={team.score.sectorEntropy} />
@@ -557,14 +557,14 @@ function TeamWorkspace({
             {edited && (
               <button
                 onClick={onReset}
-                className="text-xs text-slate-500 hover:underline"
+                className="text-xs text-neutral-400 hover:underline"
               >
                 Reset to suggested
               </button>
             )}
             <button
               onClick={onAddMember}
-              className="inline-flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+              className="inline-flex items-center gap-1 rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
             >
               <Plus size={12} /> Add member
             </button>
@@ -578,50 +578,50 @@ function TeamWorkspace({
         </div>
 
         {missingSectors.length > 0 && (
-          <div className="mb-3 rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-900">
+          <div className="mb-3 rounded-md bg-amber-900/30 px-3 py-2 text-xs text-amber-200">
             <b>Sector gap:</b> this team is missing {missingSectors.map((s) => SECTOR_LABELS[s]).join(", ")}.
             The RFA favors interdisciplinary consortiums — consider adding one.
           </div>
         )}
 
-        <ul className="divide-y divide-slate-100 rounded-md border border-slate-100">
+        <ul className="divide-y divide-slate-100 rounded-md border border-neutral-800">
           {team.members.map((p, i) => {
             const contrib = contributions.find((c) => c.profile.slug === p.slug);
             const isLead = p.slug === leadSlug;
             const locked = lockedSlugs.has(p.slug);
             return (
               <li key={p.slug} className="flex items-start gap-3 p-3">
-                <span className="mt-1 shrink-0 text-xs font-semibold text-slate-400">#{i + 1}</span>
+                <span className="mt-1 shrink-0 text-xs font-semibold text-neutral-500">#{i + 1}</span>
                 <span
                   className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full"
                   style={{ background: affiliationColor(p.affiliation) }}
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <Link to={`/profile/${p.slug}`} className="font-semibold text-sky-700 hover:underline">
+                    <Link to={`/profile/${p.slug}`} className="font-semibold text-cyan-400 hover:underline">
                       {p.name}
                     </Link>
-                    {isLead && <span className="rounded bg-amber-100 px-1.5 py-0 text-[10px] font-medium text-amber-800">LEAD</span>}
-                    {locked && <span className="rounded bg-slate-200 px-1.5 py-0 text-[10px] font-medium text-slate-700">LOCKED</span>}
+                    {isLead && <span className="rounded bg-amber-900/40 px-1.5 py-0 text-[10px] font-medium text-amber-300">LEAD</span>}
+                    {locked && <span className="rounded bg-neutral-700 px-1.5 py-0 text-[10px] font-medium text-neutral-200">LOCKED</span>}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-neutral-400">
                     {[p.affiliation, p.orgSize].filter(Boolean).join(" · ")}
                   </div>
                   {contrib && (contrib.uniqueChallenges.length > 0 || contrib.uniqueOfferings.length > 0) && (
                     <div className="mt-1 space-y-0.5 text-[11px]">
                       {contrib.uniqueChallenges.length > 0 && (
                         <div>
-                          <span className="font-medium text-indigo-700">Uniquely covers:</span>{" "}
+                          <span className="font-medium text-cyan-300">Uniquely covers:</span>{" "}
                           {contrib.uniqueChallenges.map((c) => (
-                            <span key={c} className="ml-1 inline-block rounded-full bg-indigo-100 px-2 py-0 text-indigo-800">{c}</span>
+                            <span key={c} className="ml-1 inline-block rounded-full bg-cyan-900/40 px-2 py-0 text-cyan-200">{c}</span>
                           ))}
                         </div>
                       )}
                       {contrib.uniqueOfferings.length > 0 && (
                         <div>
-                          <span className="font-medium text-emerald-700">Only provider of:</span>{" "}
+                          <span className="font-medium text-emerald-300">Only provider of:</span>{" "}
                           {contrib.uniqueOfferings.map((t) => (
-                            <span key={t} className="ml-1 inline-block rounded-full bg-emerald-100 px-2 py-0 text-emerald-800">{t}</span>
+                            <span key={t} className="ml-1 inline-block rounded-full bg-emerald-900/40 px-2 py-0 text-emerald-200">{t}</span>
                           ))}
                         </div>
                       )}
@@ -631,7 +631,7 @@ function TeamWorkspace({
                 <div className="flex shrink-0 items-center gap-1">
                   <button
                     onClick={() => onToggleLock(p.slug)}
-                    className={`rounded p-1 ${locked ? "bg-slate-200 text-slate-700" : "text-slate-400 hover:bg-slate-100"}`}
+                    className={`rounded p-1 ${locked ? "bg-neutral-700 text-neutral-200" : "text-neutral-500 hover:bg-neutral-800"}`}
                     title={locked ? "Unlock" : "Lock — keep this member in all regenerations"}
                     aria-label="Toggle lock"
                   >
@@ -640,7 +640,7 @@ function TeamWorkspace({
                   <button
                     onClick={() => onSwapSlot(i)}
                     disabled={locked}
-                    className="rounded p-1 text-slate-400 hover:bg-slate-100 disabled:opacity-30"
+                    className="rounded p-1 text-neutral-500 hover:bg-neutral-800 disabled:opacity-30"
                     title="Swap"
                     aria-label="Swap member"
                   >
@@ -649,7 +649,7 @@ function TeamWorkspace({
                   <button
                     onClick={() => onRemoveSlot(i)}
                     disabled={locked}
-                    className="rounded p-1 text-slate-400 hover:bg-slate-100 disabled:opacity-30"
+                    className="rounded p-1 text-neutral-500 hover:bg-neutral-800 disabled:opacity-30"
                     title="Remove"
                     aria-label="Remove member"
                   >
@@ -663,27 +663,27 @@ function TeamWorkspace({
       </section>
 
       {coverage.gaps.length > 0 && (
-        <section className="rounded-md border border-red-200 bg-red-50 p-4">
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-red-700">Gaps to address</h3>
+        <section className="rounded-md border border-red-800 bg-red-900/30 p-4">
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-red-400">Gaps to address</h3>
           <ul className="space-y-1 text-xs">
             {coverage.gaps.map((g, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className={`shrink-0 rounded px-1.5 py-0 text-[10px] font-medium ${
-                  g.severity === "critical" ? "bg-red-200 text-red-900" : "bg-amber-200 text-amber-900"
+                  g.severity === "critical" ? "bg-red-200 text-red-200" : "bg-amber-200 text-amber-200"
                 }`}>
                   {g.severity.toUpperCase()}
                 </span>
-                <span className="text-slate-800"><b>{g.label}</b> — {g.recommendation}</span>
+                <span className="text-neutral-100"><b>{g.label}</b> — {g.recommendation}</span>
               </li>
             ))}
           </ul>
           {marginalAddition && (
-            <div className="mt-3 rounded-md border border-red-200 bg-white p-2 text-xs">
+            <div className="mt-3 rounded-md border border-red-800 bg-neutral-900 p-2 text-xs">
               Best partner to add next:{" "}
-              <Link to={`/profile/${marginalAddition.candidate.slug}`} className="font-semibold text-sky-700 hover:underline">
+              <Link to={`/profile/${marginalAddition.candidate.slug}`} className="font-semibold text-cyan-400 hover:underline">
                 {marginalAddition.candidate.name}
               </Link>{" "}
-              <span className="text-slate-500">(+{marginalAddition.delta.toFixed(2)} team score)</span>
+              <span className="text-neutral-400">(+{marginalAddition.delta.toFixed(2)} team score)</span>
               <button
                 onClick={onAddTopMarginal}
                 className="ml-2 rounded bg-slate-900 px-2 py-0.5 text-[10px] text-white hover:bg-slate-700"
@@ -696,7 +696,7 @@ function TeamWorkspace({
       )}
 
       <section>
-        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-600">Coverage matrix</h3>
+        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-300">Coverage matrix</h3>
         <CoverageMatrixView matrix={coverage} />
       </section>
     </div>
@@ -706,9 +706,9 @@ function TeamWorkspace({
 function ScoreChip({ label, value }: { label: string; value: number }) {
   const pct = Math.round(value * 100);
   const tone =
-    pct >= 80 ? "bg-emerald-100 text-emerald-800" :
-    pct >= 50 ? "bg-amber-100 text-amber-800" :
-                "bg-red-100 text-red-800";
+    pct >= 80 ? "bg-emerald-900/40 text-emerald-200" :
+    pct >= 50 ? "bg-amber-900/40 text-amber-300" :
+                "bg-red-900/40 text-red-300";
   return (
     <span className={`rounded-full px-2 py-0.5 text-[11px] ${tone}`}>
       {label}: {pct}%
@@ -726,16 +726,16 @@ function EmptyState({
 }) {
   return (
     <div className="mx-auto max-w-3xl p-8">
-      <h2 className="mb-2 text-xl font-semibold text-slate-900">
+      <h2 className="mb-2 text-xl font-semibold text-neutral-100">
         Assemble a consortium for the Genesis Mission
       </h2>
-      <p className="mb-4 text-sm text-slate-600 leading-relaxed">
+      <p className="mb-4 text-sm text-neutral-300 leading-relaxed">
         Pick one or more challenge areas below. Composer scores every
         combination of Genesis participants and proposes three distinct teams
         optimized for different proposal strategies — then hands you a coverage
         matrix, gap analysis, and narrative draft ready for your proposal.
       </p>
-      <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+      <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-400">
         Select a challenge to start
       </h3>
       <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -744,12 +744,12 @@ function EmptyState({
             <button
               type="button"
               onClick={() => onToggleChallenge(c)}
-              className="flex w-full items-start gap-2 rounded-md border border-slate-200 bg-white p-3 text-left hover:border-slate-400"
+              className="flex w-full items-start gap-2 rounded-md border border-neutral-800 bg-neutral-900 p-3 text-left hover:border-neutral-600"
             >
               <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-400" />
               <div className="flex-1">
                 <div className="text-sm font-medium">{c}</div>
-                <div className="text-[11px] text-slate-500">{n} participants tagged</div>
+                <div className="text-[11px] text-neutral-400">{n} participants tagged</div>
               </div>
             </button>
           </li>
@@ -784,7 +784,7 @@ function SwapDialog({
             <button
               type="button"
               onClick={() => onPick(candidate)}
-              className="flex w-full items-start gap-2 p-3 text-left hover:bg-slate-50"
+              className="flex w-full items-start gap-2 p-3 text-left hover:bg-neutral-900"
             >
               <span
                 className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full"
@@ -792,12 +792,12 @@ function SwapDialog({
               />
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold">{candidate.name}</div>
-                <div className="text-xs text-slate-500">{candidate.affiliation}</div>
+                <div className="text-xs text-neutral-400">{candidate.affiliation}</div>
               </div>
               <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] ${
-                delta > 0 ? "bg-emerald-100 text-emerald-800" :
-                delta < 0 ? "bg-red-100 text-red-800" :
-                            "bg-slate-100 text-slate-600"
+                delta > 0 ? "bg-emerald-900/40 text-emerald-200" :
+                delta < 0 ? "bg-red-900/40 text-red-300" :
+                            "bg-neutral-800 text-neutral-300"
               }`}>
                 {delta > 0 ? "+" : ""}{delta.toFixed(2)}
               </span>
@@ -837,7 +837,7 @@ function AddDialog({
             <button
               type="button"
               onClick={() => onPick(candidate)}
-              className="flex w-full items-start gap-2 p-3 text-left hover:bg-slate-50"
+              className="flex w-full items-start gap-2 p-3 text-left hover:bg-neutral-900"
             >
               <span
                 className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full"
@@ -845,10 +845,10 @@ function AddDialog({
               />
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold">{candidate.name}</div>
-                <div className="text-xs text-slate-500">{candidate.affiliation}</div>
+                <div className="text-xs text-neutral-400">{candidate.affiliation}</div>
               </div>
               <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] ${
-                delta > 0 ? "bg-emerald-100 text-emerald-800" : "bg-slate-100 text-slate-600"
+                delta > 0 ? "bg-emerald-900/40 text-emerald-200" : "bg-neutral-800 text-neutral-300"
               }`}>
                 {delta > 0 ? "+" : ""}{delta.toFixed(2)}
               </span>
@@ -866,12 +866,12 @@ function DialogShell({ title, children, onClose }: {
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/30 p-6" onClick={onClose}>
       <div
-        className="w-full max-w-lg overflow-hidden rounded-md bg-white shadow-xl"
+        className="w-full max-w-lg overflow-hidden rounded-md bg-neutral-900 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-slate-200 px-4 py-2">
+        <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-2">
           <h3 className="text-sm font-semibold">{title}</h3>
-          <button onClick={onClose} className="rounded p-1 text-slate-400 hover:bg-slate-100">
+          <button onClick={onClose} className="rounded p-1 text-neutral-500 hover:bg-neutral-800">
             <X size={14} />
           </button>
         </div>
@@ -937,17 +937,17 @@ function NarrativeDialog({
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/50 p-4" onClick={onClose}>
       <div
-        className="flex h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-md bg-white shadow-2xl"
+        className="flex h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-md bg-neutral-900 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 border-b border-slate-200 px-4 py-2">
+        <div className="flex items-center gap-3 border-b border-neutral-800 px-4 py-2">
           <h3 className="text-sm font-semibold">Proposal assets</h3>
           <nav className="flex gap-1">
             <TabBtn active={tab === "narrative"} onClick={() => setTab("narrative")}>Narrative draft</TabBtn>
             <TabBtn active={tab === "csv"} onClick={() => setTab("csv")}>Roster (CSV)</TabBtn>
             <TabBtn active={tab === "outreach"} onClick={() => setTab("outreach")}>Outreach ({outreach.length})</TabBtn>
           </nav>
-          <button onClick={onClose} className="ml-auto rounded p-1 text-slate-400 hover:bg-slate-100">
+          <button onClick={onClose} className="ml-auto rounded p-1 text-neutral-500 hover:bg-neutral-800">
             <X size={14} />
           </button>
         </div>
@@ -958,24 +958,24 @@ function NarrativeDialog({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => navigator.clipboard.writeText(narrative.markdown)}
-                  className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                  className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                 >
                   Copy Markdown
                 </button>
                 <button
                   onClick={() => download("consortium-narrative.md", "text/markdown", narrative.markdown)}
-                  className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                  className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                 >
                   Download .md
                 </button>
                 <button
                   onClick={() => download("consortium-narrative.txt", "text/plain", narrative.plaintext)}
-                  className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                  className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                 >
                   Download .txt
                 </button>
               </div>
-              <pre className="whitespace-pre-wrap rounded-md border border-slate-200 bg-slate-50 p-4 font-mono text-[12px] leading-relaxed text-slate-800">
+              <pre className="whitespace-pre-wrap rounded-md border border-neutral-800 bg-neutral-900 p-4 font-mono text-[12px] leading-relaxed text-neutral-100">
                 {narrative.markdown}
               </pre>
             </div>
@@ -986,18 +986,18 @@ function NarrativeDialog({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => download("consortium-roster.csv", "text/csv", csv)}
-                  className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                  className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                 >
                   Download .csv
                 </button>
                 <button
                   onClick={() => download("consortium-roster.json", "application/json", JSON.stringify(team.members, null, 2))}
-                  className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                  className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                 >
                   Download .json
                 </button>
               </div>
-              <pre className="whitespace-pre overflow-x-auto rounded-md border border-slate-200 bg-slate-50 p-4 font-mono text-[11px] leading-relaxed text-slate-800">
+              <pre className="whitespace-pre overflow-x-auto rounded-md border border-neutral-800 bg-neutral-900 p-4 font-mono text-[11px] leading-relaxed text-neutral-100">
                 {csv}
               </pre>
             </div>
@@ -1005,30 +1005,30 @@ function NarrativeDialog({
 
           {tab === "outreach" && (
             <div className="space-y-4">
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-neutral-400">
                 Personalized email template for each non-lead member. Edit freely — these are starting drafts.
               </div>
               {outreach.map(({ target: p, text }) => (
-                <details key={p.slug} className="rounded-md border border-slate-200 bg-white">
-                  <summary className="cursor-pointer px-3 py-2 text-sm font-medium hover:bg-slate-50">
-                    To: {p.name} <span className="text-[11px] text-slate-400">({p.affiliation})</span>
+                <details key={p.slug} className="rounded-md border border-neutral-800 bg-neutral-900">
+                  <summary className="cursor-pointer px-3 py-2 text-sm font-medium hover:bg-neutral-900">
+                    To: {p.name} <span className="text-[11px] text-neutral-500">({p.affiliation})</span>
                   </summary>
-                  <div className="border-t border-slate-100 p-3">
+                  <div className="border-t border-neutral-800 p-3">
                     <div className="mb-2 flex gap-2">
                       <button
                         onClick={() => navigator.clipboard.writeText(text)}
-                        className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                        className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                       >
                         Copy
                       </button>
                       <button
                         onClick={() => download(`outreach-${p.slug}.txt`, "text/plain", text)}
-                        className="rounded border border-slate-300 bg-white px-2 py-1 text-xs hover:bg-slate-50"
+                        className="rounded border border-neutral-700 bg-neutral-900 px-2 py-1 text-xs hover:bg-neutral-900"
                       >
                         Download .txt
                       </button>
                     </div>
-                    <pre className="whitespace-pre-wrap rounded bg-slate-50 p-3 font-mono text-[11px] text-slate-800">{text}</pre>
+                    <pre className="whitespace-pre-wrap rounded bg-neutral-900 p-3 font-mono text-[11px] text-neutral-100">{text}</pre>
                   </div>
                 </details>
               ))}
@@ -1045,7 +1045,7 @@ function TabBtn({ active, onClick, children }: { active: boolean; onClick: () =>
     <button
       type="button"
       onClick={onClick}
-      className={`rounded px-2 py-1 text-xs ${active ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"}`}
+      className={`rounded px-2 py-1 text-xs ${active ? "bg-slate-900 text-white" : "text-neutral-300 hover:bg-neutral-800"}`}
     >
       {children}
     </button>

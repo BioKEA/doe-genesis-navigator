@@ -14,17 +14,17 @@ const STRENGTH_DOTS: Record<Strength, string> = {
 };
 
 const STRENGTH_COLOR: Record<Strength, string> = {
-  0: "text-slate-200",
+  0: "text-neutral-600",
   1: "text-emerald-400",
-  2: "text-emerald-600",
-  3: "text-emerald-800",
+  2: "text-emerald-400",
+  3: "text-emerald-200",
 };
 
 const STATUS_BG: Record<string, string> = {
-  strong: "bg-emerald-50",
-  thin: "bg-amber-50",
-  gap: "bg-red-50",
-  redundant: "bg-sky-50",
+  strong: "bg-emerald-900/30",
+  thin: "bg-amber-900/30",
+  gap: "bg-red-900/30",
+  redundant: "bg-cyan-900/30",
 };
 
 const STATUS_LABEL: Record<string, string> = {
@@ -43,17 +43,17 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
   const offeringRows = rows.filter((r) => r.kind === "offering");
 
   return (
-    <div className="overflow-x-auto rounded-md border border-slate-200 bg-white">
+    <div className="overflow-x-auto rounded-md border border-neutral-700 bg-neutral-900">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-slate-50">
-            <th className="sticky left-0 z-10 w-60 bg-slate-50 px-3 py-2 text-left text-xs uppercase text-slate-500">
+          <tr className="bg-neutral-900">
+            <th className="sticky left-0 z-10 w-60 bg-neutral-900 px-3 py-2 text-left text-xs uppercase text-neutral-400">
               Requirement
             </th>
             {members.map((p) => (
               <th
                 key={p.slug}
-                className="min-w-[90px] border-l border-slate-100 px-2 py-2 text-left align-bottom"
+                className="min-w-[90px] border-l border-neutral-800 px-2 py-2 text-left align-bottom"
                 style={{ minHeight: 80 }}
               >
                 <button
@@ -68,7 +68,7 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
                       style={{ background: affiliationColor(p.affiliation) }}
                     />
                     <div
-                      className="text-[11px] font-semibold leading-tight text-slate-800 group-hover:text-sky-700"
+                      className="text-[11px] font-semibold leading-tight text-neutral-100 group-hover:text-cyan-300"
                       style={{
                         writingMode: "vertical-rl",
                         transform: "rotate(180deg)",
@@ -81,7 +81,7 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
                 </button>
               </th>
             ))}
-            <th className="border-l border-slate-100 px-2 py-2 text-left text-xs uppercase text-slate-500">
+            <th className="border-l border-neutral-800 px-2 py-2 text-left text-xs uppercase text-neutral-400">
               Status
             </th>
           </tr>
@@ -91,21 +91,21 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
             <tr>
               <td
                 colSpan={members.length + 2}
-                className="bg-indigo-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-indigo-700"
+                className="bg-cyan-900/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cyan-300"
               >
                 Challenge areas
               </td>
             </tr>
           )}
           {challengeRows.map((row) => (
-            <tr key={`c:${row.label}`} className="border-t border-slate-100">
+            <tr key={`c:${row.label}`} className="border-t border-neutral-800">
               <td className={`sticky left-0 z-10 w-60 px-3 py-2 text-xs ${STATUS_BG[row.status]}`}>
                 {row.label}
               </td>
               {row.cells.map((cell, i) => (
                 <td
                   key={i}
-                  className={`border-l border-slate-100 px-2 py-2 text-center text-sm ${
+                  className={`border-l border-neutral-800 px-2 py-2 text-center text-sm ${
                     cell.strength > 0 ? STATUS_BG[row.status] : ""
                   }`}
                 >
@@ -114,7 +114,7 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
                   </span>
                 </td>
               ))}
-              <td className={`border-l border-slate-100 px-2 py-2 text-[11px] ${STATUS_BG[row.status]}`}>
+              <td className={`border-l border-neutral-800 px-2 py-2 text-[11px] ${STATUS_BG[row.status]}`}>
                 {STATUS_LABEL[row.status]}
               </td>
             </tr>
@@ -124,21 +124,21 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
             <tr>
               <td
                 colSpan={members.length + 2}
-                className="bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-700"
+                className="bg-emerald-900/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-300"
               >
                 Required offerings
               </td>
             </tr>
           )}
           {offeringRows.map((row) => (
-            <tr key={`o:${row.label}`} className="border-t border-slate-100">
+            <tr key={`o:${row.label}`} className="border-t border-neutral-800">
               <td className={`sticky left-0 z-10 w-60 px-3 py-2 text-xs ${STATUS_BG[row.status]}`}>
                 {row.label}
               </td>
               {row.cells.map((cell, i) => (
                 <td
                   key={i}
-                  className={`border-l border-slate-100 px-2 py-2 text-center text-sm ${
+                  className={`border-l border-neutral-800 px-2 py-2 text-center text-sm ${
                     cell.strength > 0 ? STATUS_BG[row.status] : ""
                   }`}
                 >
@@ -147,19 +147,19 @@ export default function CoverageMatrixView({ matrix, onMemberClick }: Props) {
                   </span>
                 </td>
               ))}
-              <td className={`border-l border-slate-100 px-2 py-2 text-[11px] ${STATUS_BG[row.status]}`}>
+              <td className={`border-l border-neutral-800 px-2 py-2 text-[11px] ${STATUS_BG[row.status]}`}>
                 {STATUS_LABEL[row.status]}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="border-t border-slate-200 bg-slate-50 px-3 py-2 text-[11px] text-slate-500">
+      <div className="border-t border-neutral-700 bg-neutral-900 px-3 py-2 text-[11px] text-neutral-400">
         Dots show coverage strength (● basic, ●● solid, ●●● deep).
-        <span className="mx-2 rounded bg-emerald-50 px-1">green</span> = strong ·
-        <span className="mx-2 rounded bg-amber-50 px-1">amber</span> = thin ·
-        <span className="mx-2 rounded bg-red-50 px-1">red</span> = gap ·
-        <span className="mx-2 rounded bg-sky-50 px-1">blue</span> = redundant
+        <span className="mx-2 rounded bg-emerald-900/30 px-1">green</span> = strong ·
+        <span className="mx-2 rounded bg-amber-900/30 px-1">amber</span> = thin ·
+        <span className="mx-2 rounded bg-red-900/30 px-1">red</span> = gap ·
+        <span className="mx-2 rounded bg-cyan-900/30 px-1">blue</span> = redundant
       </div>
     </div>
   );
