@@ -28,7 +28,18 @@ export function RightPane({ data }: Props) {
   if (selectedNode.startsWith("partner:")) {
     const slug = selectedNode.slice("partner:".length);
     const profile = profileBySlug.get(slug);
-    if (!profile) return null;
+    if (!profile) {
+      return (
+        <aside className="w-[260px] border-l border-neutral-800 bg-neutral-950 p-4 text-sm text-neutral-300">
+          <p className="font-medium text-neutral-100">Partner not found</p>
+          <p className="mt-2 text-xs text-neutral-400">
+            We don't have a partner with slug{" "}
+            <code className="rounded bg-neutral-800 px-1 text-pink-300">{slug}</code>.
+            Pick one from the canvas.
+          </p>
+        </aside>
+      );
+    }
     const conceptIds = data.profileConcepts[slug] ?? [];
     const matches = data.matches
       .filter((m) => m.from === slug)

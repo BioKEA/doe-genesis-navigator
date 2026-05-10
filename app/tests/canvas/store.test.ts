@@ -26,13 +26,13 @@ describe("useCanvasStore", () => {
     expect(useCanvasStore.getState().selectedNode).toBe("partner:alice");
   });
 
-  it("setTopK clamps to [3, 20]", () => {
+  it("setTopK clamps to [3, 12]", () => {
     useCanvasStore.getState().setTopK(2);
     expect(useCanvasStore.getState().topK).toBe(3);
     useCanvasStore.getState().setTopK(50);
-    expect(useCanvasStore.getState().topK).toBe(20);
-    useCanvasStore.getState().setTopK(12);
     expect(useCanvasStore.getState().topK).toBe(12);
+    useCanvasStore.getState().setTopK(8);
+    expect(useCanvasStore.getState().topK).toBe(8);
   });
 
   it("toggleConceptCategory adds and removes a category id", () => {

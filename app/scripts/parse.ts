@@ -4,9 +4,6 @@ import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
 import type {
   ConceptsArtifact,
-  NetworkData,
-  NetworkEdge,
-  NetworkNode,
   ParseError,
   Profile,
   ProfileConceptMap,
@@ -20,7 +17,6 @@ import {
   extractTaggedText,
 } from "./lib/extract";
 import { inferKind } from "./lib/infer-kind";
-import { buildEdges, topNeighbors } from "./lib/similarity";
 import { buildSearchIndex } from "./lib/search-index";
 import { attachConceptIds } from "./concepts/lib/merge";
 import { topKMatchesPerPartner } from "./matches/lib/matches-merge";
@@ -128,25 +124,14 @@ function main() {
     console.log("no matches.json found — skipping match merge (run npm run matches first)");
   }
 
-  const neighbors = topNeighbors(mergedProfiles, 6);
-  const edges: NetworkEdge[] = buildEdges(mergedProfiles);
-  const nodes: NetworkNode[] = mergedProfiles.map((p) => ({
-    slug: p.slug,
-    name: p.name,
-    affiliation: p.affiliation,
-    richness: countFilled(p),
-  }));
-  const network: NetworkData = { nodes, edges, neighbors };
-
   const search = buildSearchIndex(mergedProfiles);
 
   writeFileSync(join(OUT_DIR, "profiles.json"), JSON.stringify(mergedProfiles));
-  writeFileSync(join(OUT_DIR, "network.json"), JSON.stringify(network));
   writeFileSync(join(OUT_DIR, "search.json"), JSON.stringify(search));
   writeFileSync(join(OUT_DIR, "parse-errors.json"), JSON.stringify(errors, null, 2));
 
   console.log(
-    `parsed ${profiles.length} profiles, ${edges.length} edges, ${errors.length} errors`,
+    `parsed ${profiles.length} profiles, ${errors.length} errors`,
   );
 }
 

@@ -31,7 +31,7 @@ export function LeftPane({ categories }: Props) {
             aria-label="top matches per partner"
             type="range"
             min={3}
-            max={20}
+            max={12}
             value={topK}
             onChange={(e) => setTopK(Number(e.target.value))}
             className="mt-1 w-full"

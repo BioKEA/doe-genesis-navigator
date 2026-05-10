@@ -29,7 +29,7 @@ export const useCanvasStore = create<CanvasState>((set) => ({
   setSelectedNode: (id) => set({ selectedNode: id }),
   setHoverNode: (id) => set({ hoverNode: id }),
   setMatchOverlayOn: (on) => set({ matchOverlayOn: on }),
-  setTopK: (k) => set({ topK: clamp(Math.round(k), 3, 20) }),
+  setTopK: (k) => set({ topK: clamp(Math.round(k), 3, 12) }),
   setReciprocityHighlight: (on) => set({ reciprocityHighlight: on }),
   toggleConceptCategory: (id) =>
     set((s) => {

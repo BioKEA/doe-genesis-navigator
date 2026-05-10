@@ -1,4 +1,4 @@
-import type { NetworkData, Profile } from "./types";
+import type { Profile } from "./types";
 
 interface SearchBundle {
   docs: Array<{
@@ -14,7 +14,6 @@ interface SearchBundle {
 
 interface Bundle {
   profiles: Profile[];
-  network: NetworkData;
   search: SearchBundle;
 }
 
@@ -23,12 +22,11 @@ let cache: Promise<Bundle> | null = null;
 export function loadData(): Promise<Bundle> {
   if (!cache) {
     cache = (async () => {
-      const [profiles, network, search] = await Promise.all([
+      const [profiles, search] = await Promise.all([
         fetch("/data/profiles.json").then((r) => r.json() as Promise<Profile[]>),
-        fetch("/data/network.json").then((r) => r.json() as Promise<NetworkData>),
         fetch("/data/search.json").then((r) => r.json() as Promise<SearchBundle>),
       ]);
-      return { profiles, network, search };
+      return { profiles, search };
     })();
   }
   return cache;
