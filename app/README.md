@@ -116,6 +116,14 @@ vercel --prod         # promote to production
 The `app/vercel.json` in this repo pins the SPA-routing fallback, asset
 caching, and build command.
 
+## License
+
+[MIT](../LICENSE), © 2026 BioKEA. Covers the app code and the curated
+artifacts under `data-source/`. Scraped HTML in `../detail-pages/` is third-
+party content included only for build reproducibility; BioKEA brand assets
+under `public/brand/` are not licensed for derivative use. See the
+[LICENSE](../LICENSE) for full scope.
+
 ## Routing + static assets
 
 `src/App.tsx` uses `HashRouter`, so routes live in the URL fragment

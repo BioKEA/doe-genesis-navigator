@@ -65,6 +65,15 @@ points the build at the app subdirectory; SPA routing falls back to
 `app/index.html`. See `app/README.md` for both the GitHub-integration
 flow and the one-shot CLI deploy.
 
+## License
+
+[MIT](LICENSE), © 2026 BioKEA. The license covers the code and the curated
+artifacts produced by the offline pipelines (concepts, matches). Raw scraped
+HTML in `detail-pages/` is the property of the original profile authors and
+the DOE Genesis program operators — it is included only for build
+reproducibility. The BioKEA logo and brand assets are not licensed for
+derivative use. See [LICENSE](LICENSE) for the full scope.
+
 ## Status
 
 Three plans shipped on `main`:
