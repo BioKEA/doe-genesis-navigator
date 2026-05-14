@@ -1,4 +1,5 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync, cpSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
@@ -110,10 +111,19 @@ function main() {
     console.log("no concepts.json found — skipping concept merge (run npm run concepts first)");
   }
 
-  // Merge match layer if available (Plan 2 of the knowledge-graph redesign)
-  const MATCHES_PATH = resolve(__dirname, "../data-source/matches.json");
-  if (existsSync(MATCHES_PATH)) {
-    const matches = JSON.parse(readFileSync(MATCHES_PATH, "utf8")) as Match[];
+  // Merge match layer if available (Plan 2 of the knowledge-graph redesign).
+  // Source artifact is gzipped (~3 MB) so it fits under hosting CLI upload
+  // limits; the plain JSON (~20 MB) is gitignored. Both are read here.
+  const MATCHES_GZ = resolve(__dirname, "../data-source/matches.json.gz");
+  const MATCHES_JSON = resolve(__dirname, "../data-source/matches.json");
+  let matchesRaw: string | null = null;
+  if (existsSync(MATCHES_GZ)) {
+    matchesRaw = gunzipSync(readFileSync(MATCHES_GZ)).toString("utf8");
+  } else if (existsSync(MATCHES_JSON)) {
+    matchesRaw = readFileSync(MATCHES_JSON, "utf8");
+  }
+  if (matchesRaw) {
+    const matches = JSON.parse(matchesRaw) as Match[];
     // Cap to top-20 per partner for shipping (runtime slider goes 3-20).
     const trimmed = topKMatchesPerPartner(matches, 20);
     writeFileSync(join(OUT_DIR, "matches.json"), JSON.stringify(trimmed));
@@ -121,7 +131,7 @@ function main() {
       `merged ${matches.length} matches → ${trimmed.length} after top-20 cap`,
     );
   } else {
-    console.log("no matches.json found — skipping match merge (run npm run matches first)");
+    console.log("no matches.json[.gz] found — skipping match merge (run npm run matches first)");
   }
 
   const search = buildSearchIndex(mergedProfiles);

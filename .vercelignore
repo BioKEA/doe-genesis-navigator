@@ -8,3 +8,6 @@ app/playwright-report
 .superpowers
 docs
 genesis-partners-dump.zip
+# Vercel reads matches.json.gz at build time; the plain 20 MB version
+# stays on developer machines but should not be uploaded.
+app/data-source/matches.json

@@ -18,3 +18,8 @@ app/.env
 # Redundant with unzipped detail-pages/ and list-pages/
 genesis-partners-dump.zip
 .vercel
+
+# Plain matches.json is 20 MB; only matches.json.gz (~3 MB) is committed,
+# and parse.ts decompresses at build time. Keep the plain file on disk for
+# convenience after running `npm run matches`, just don't track it.
+app/data-source/matches.json

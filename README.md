@@ -1,5 +1,8 @@
 # DOE Genesis Mission Partner Navigator
 
+**Live app:** https://doe-genesis-navigator.vercel.app
+**Vercel project:** [sean-jungbluths-projects/doe-genesis-navigator](https://vercel.com/sean-jungbluths-projects/doe-genesis-navigator)
+
 End-to-end pipeline for scraping the
 [DOE Genesis Mission Partnership Exchange](https://partnerships.genesismissionconsortium.org/),
 extracting a curated concept layer from the resulting partner profiles, scoring
